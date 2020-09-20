@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+<!-- Block Head -->
+{% block head %}
+<title>LSTM-HateSpeech &mdash; by AgungNH</title>
+
+{% endblock %}
+
+<!-- Block Content -->
+{% block content %}
+
+	{% include 'feature.html' %}
+
+	<!-- About section -->
+    <section class="ftco-about img ftco-section" id="about-section">
+    	<div class="container">
+    		<div class="row no-gutters">
+    			<div class="col-md-12 col-lg-12 pl-md-5">
+					<div class="col-md-12 heading-section ftco-animate">
+						<h2 class="mb-4">Pengujian K-Fold Validation</h2>
+						<div class="img mx-auto col-md-9 col-lg-9">
+							<img src="{{url_for('static', filename='figures/validation_report.png')}}" class="img-fluid" alt="kfold_validation">
+						</div>
+						<br>
+						<div class="text-about">
+							<h4>K-Fold Cross Validation</h4>
+							<p style="text-align:justify">
+								<i>Cross-validation</i> adalah prosedur resampling yang digunakan untuk melakukan evaluasi model <i>deep learning</i> pada data sampel yang terbatas. 
+								<i>Cross-validation</i> digunakan dalam <i>deep learning</i> untuk memperkirakan performa dari model <i>deep learning</i> pada data yang tertutup. 
+								Artinya, menggunakan sampel terbatas untuk memperkirakan bagaimana performa model secara umum saat digunakan untuk membuat prediksi pada data yang tidak digunakan selama pelatihan model.
+								<br>
+								K-Fold <i>Cross Validation</i> adalah ketika dataset dibagi menjadi sejumlah Fold (K-n) di mana setiap fold digunakan sebagai set pengujian di beberapa titik. 
+								Pengujian pada model yang telah dilakukan adalah dengan skenario cross validation sebanyak K = 5,  di mana kumpulan data dibagi menjadi 5 bagian. 
+								Pada iterasi pertama, fold pertama digunakan untuk menguji model dan sisanya digunakan untuk melatih model. 
+								Pada iterasi kedua, fold ke-2 digunakan sebagai set pengujian, sedangkan lipatan lainnya berfungsi sebagai set pelatihan. 
+								Proses ini diulangi sampai setiap lipatan dari 5 lipatan telah digunakan sebagai set pengujian.
+							</p>
+							<h4>Accuracy</h4>
+							<p>
+								Accuracy adalah tingkat kedekatan antara nilai prediksi dengan nilai aktual.
+								<br>Accuracy = TP+TN/TP+FP+FN+TN
+							</p>
+							<h4>Precision</h4>
+							<p>
+								Precision adalah tingkat ketepatan antara informasi yang diminta oleh pengguna dengan jawaban yang diberikan oleh sistem.
+								<br>Precision = TP/TP+FP
+							</p>
+							<h4>Recall</h4>
+							<p>
+								Recall adalah tingkat keberhasilan sistem dalam menemukan kembali sebuah informasi
+								<br>Recall = TP/TP+FN
+							</p>
+							<h4>F-Measure</h4>
+							<p>
+								F-Measure merupakan salah satu perhitungan evalusasi dalam informasi temu kembali yang mengkombinasikan recall dan precission.
+								<br>F1-Score = 2*(Recall * Precision) / (Recall + Precision)
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+    	</div>
+	</section>
+	
+	{% include '/public/maintenance.html' %}
+
+<!-- End of Content -->
+{% endblock %}

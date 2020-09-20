@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+
+<!-- Block Head -->
+{% block head %}
+<title>LSTM &mdash; by Agung NH</title>
+
+{% endblock %}
+
+<!-- Block Content -->
+{% block content %}
+
+	{% include 'feature.html' %}
+
+	<!-- Sentiment section -->
+    <section class="img ftco-no-pt ftco-no-pb ftco-section" id="sentiment-section">
+    	<div class="container">
+    		<div class="row d-flex no-gutters justify-content-center">
+          <!-- input -->
+    			<div class="col-md-6 col-lg-6 d-flex">
+    				<div class="row justify-content-start pb-3">
+              <div class="col-md-12 heading-section ftco-animate">
+                <h2 class="mb-4 text-center text-dark">Analisis Tweet</h2>
+                <h4 style="text-align:justify">
+                  Analisis Sentimen Tweet. 
+                  Dataset yang digunakan dalam melatih model LSTM berasal dari twitter dengan topik Radikalisme di Indonesia. <br>
+                  Baca selengkapnya tentang <a href="/tentang_pengujian#about-section">pengujian</a> dan <a href="/tentang_model#about-section">model</a>.
+                </h4>
+                <div class="text-about">
+                  <form action="/sentiment_tweet#result-section" id="text" class="p-4 p-md-5 contact-form" method="POST">
+                    <div class="form-group col-6">
+                      <label for="tweet-count">Jumlah Tweet : </label>
+
+                      <select class="custom-select custom-select-sm form-control form-control-sm" name="tweet-count" id="tweet-count">
+                        <option value="10">10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                      </select> 
+                    </div>
+                    <div class="form-group">
+                      <textarea name="twitter-search" id="twiter-search" cols="50" rows="7" class="form-control" placeholder="Input kata kunci pencarian Tweet"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <input type="submit" value="Analisis Tweet" class="btn btn-primary py-3 px-5">
+                    </div>
+                  </form>
+                </div>
+              </div>
+		        </div>
+          </div>
+          <!-- result -->
+          {% if status %}
+    			<div class="col-md-6 col-lg-6 pl-md-5" id="result-section">
+    				<div class="row justify-content-start pb-3">
+              <div class="col-md-12 heading-section ftco-animate">
+                <h2 class="mb-4 text-dark">Hasil Analisis</h2>
+                <h5>asdasd.
+
+                </5>
+                <div class="text-about">
+                    <h3 class="text-dark">Award achievements</h3>
+                    <h5>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</h5>
+                    <h3 class="text-dark">Read On Any Devices</h3>
+                    <h5>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</h5>
+                    <h3 class="text-dark">Very High Resolution</h3>
+                    <h5>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</h5>
+                </div>
+              </div>
+		        </div>
+          </div>
+          {% endif %}
+        </div>
+    	</div>
+    </section>
+    
+    {% if status %}
+	<!-- Section counter -->
+    <section class="ftco-section ftco-no-pt ftco-no-pb ftco-counter img" id="section-counter">
+    	<div class="container">
+        <!-- result -->
+          
+    			<div class="row d-md-flex align-items-center align-items-stretch" id="result-section">
+    				<div class="row justify-content-start pb-3">
+              <div class="col-md-12 heading-section ftco-animate">
+                <h2 class="mb-4 text-dark">Hasil Analisis</h2>
+                <div>
+                  {{ table1 | safe }}
+                </div>
+              </div>
+		        </div>
+          </div>
+				<div class="row d-md-flex align-items-center align-items-stretch">
+          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+            <div class="block-18 bg-light">
+              <div class="text">
+                <strong class="number" data-number="1100">0</strong>
+                <span>Copies Sold</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+            <div class="block-18 bg-light">
+              <div class="text">
+                <strong class="number" data-number="1200">0</strong>
+                <span>Copies Released</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+            <div class="block-18 bg-light">
+              <div class="text">
+                <strong class="number" data-number="340">0</strong>
+                <span>Cup Of Coffee</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+            <div class="block-18 bg-light">
+              <div class="text">
+                <strong class="number" data-number="12000">0</strong>
+                <span>Happy Readers</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    {% endif %}
+
+<!-- End of Content -->
+{% endblock %}

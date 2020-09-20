@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+<!-- Block Head -->
+{% block head %}
+<title>LSTM-HateSpeech &mdash; by AgungNH</title>
+
+{% endblock %}
+
+<!-- Block Content -->
+{% block content %}
+
+	{% include 'feature.html' %}
+
+	<!-- About section -->
+	<section class="ftco-about img ftco-section" id="about-section">
+		<div class="container">
+			<div class="row no-gutters">
+				<div class="col-md-12 col-lg-12 pl-md-5">
+					<div class="col-md-12 heading-section ftco-animate">
+						<h2 class="mb-4">Long-Short Term Memory (LSTM)</h2>
+						<br>
+						<div class="text-about">
+							<h4 class="heading">Recurrent Neural Network</h4>
+							<div class="img mx-auto col-md-9 col-lg-9">
+								<img src="{{url_for('static', filename='images/RNN-unrolled-1.png')}}" class="img-fluid" alt="rnn-unrolled">
+							</div><br>
+							<p style="text-align:justify">
+								<i>Recurrent Neural Network</i> (RNN) merupakan jaringan saraf berulang. 
+								Dikatakan jaringan saraf berulang karena nilai <i>neuron</i> pada <i>hidden layer</i> sebelumnya akan digunakan kembali sebagai data input. 
+								Penggunaan <i>neuron</i> pada <i>hidden layer</i> akan disimpan ke dalam sebuah <i>layer</i> yang dinamakan <i>context layer</i>. 
+								Nilai <i>neuron</i> pada <i>context layer</i> akan terus update hingga kondisi RNN terpenuhi.
+							</p>
+							<br>
+							<h4>Long Short Term Memory</h4>
+							<div class="img mx-auto col-lg-9">
+								<img src="{{url_for('static', filename='images/LSTM3-chain-1.png')}}" class="img-fluid" alt="lstm-chain">
+							</div><br>
+							<p style="text-align:justify"> 
+								<i>Long Short Term Memory</i> (LSTM) merupakan jenis modul pemrosesan lain untuk <i>Recurrent Neural Network</i> (RNN). 
+								Seperti RNN, Jaringan LSTM juga terdiri dari modul-modul pemrosesan berulang, yang membedakan adalah modul pembentuk jaringan LSTM adalah modul LSTM sebelumnya. 
+								Perbedaan lainya adalah adanya tambahan sinyal yang diberikan dari satu langkah waktu kelangkah waktu berikutnya, yaitu konteks. 
+								LSTM didesain untuk mengatasi <i>vanisihing gradients</i> menggunakan mekanisme gerbang (<i>gate</i>) yang sebelumnya menjadi masalah pada RNN. 
+								Keunggulan metode LSTM dibandingkan dengan RNN adalah adanya arsitektur mengingat dan melupakan output yang akan diproses kembali menjadi input. 
+								Selain itu, keunggulan lain yang dimiliki oleh metode ini adalah adanya kemampuan untuk mempertahankan error saat melakukan <i>backpropagation</i> yang memungkinkan kesalahan yang terjadi tidak akan mengalami peningkatan (Zhang, 2016).
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	{% include '/public/maintenance.html' %}
+
+<!-- End of Content -->
+{% endblock %}

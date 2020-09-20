@@ -1,0 +1,526 @@
+{% extends 'base.html' %}
+
+<!-- Block Head -->
+{% block head %}
+<title>LSTM &mdash; by Agung NH</title>
+
+{% endblock %}
+
+<!-- Block Content -->
+{% block content %}
+
+	<!-- Home section -->
+	<section class="hero-wrap js-fullheight">
+      <div class="overlay"></div><!-- Remove overlay to enable desktop start click -->
+      <div class="container-fluid px-0">
+      	<div class="row d-md-flex no-gutters slider-text align-items-center js-fullheight justify-content-end">
+	      	<img class="one-third js-fullheight align-self-end order-md-last img-fluid" src="{{url_for('static', filename='img/deep-learning.svg')}}" alt="">
+	        <div class="one-forth d-flex align-items-center ftco-animate js-fullheight">
+	        	<div class="text mt-5">
+	        		<span class="subheading">Long-Short Term Memory</span>
+					<h1 class="text-dark">LSTM</h1>
+					<h3 class="text-dark">Implementasi Algoritma LSTM untuk Analisis Sentimen Opini Publik</h3>
+					<h4 class="text-dark">Pelajari lebih lanjut atau mulai analisis.</h4>
+					<p><a href="#feature-section" class="btn btn-primary py-3 px-4">Mulai Analisis</a></p>
+	          </div>
+	        </div>
+	    </div>
+      </div>
+    </section>
+
+	{% include 'feature.html' %}
+
+	<!-- About section -->
+    <section class="ftco-about img ftco-section" id="about-section">
+    	<div class="container">
+    		<div class="row d-flex no-gutters">
+    			<div class="col-md-6 col-lg-6 d-flex">
+    				<div class="img-about img d-flex align-items-stretch">
+    					<div class="overlay"></div>
+	    				<div class="img d-flex align-self-stretch align-items-center" style="background-image:url({{url_for('static', filename='images/bg_1.jpg')}});">
+	    				</div>
+    				</div>
+    			</div>
+    			<div class="col-md-6 col-lg-6 pl-md-5">
+    				<div class="row justify-content-start pb-3">
+		          <div class="col-md-12 heading-section ftco-animate">
+		            <h2 class="mb-4">Tentang Penelitian</h2>
+		            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+		            <div class="text-about">
+		            	<h4>Award achievements</h4>
+			            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+			            <h4>Read On Any Devices</h4>
+			            <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+			            <h4>Very High Resolution</h4>
+			            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+		            </div>
+		          </div>
+		        </div>
+	        </div>
+        </div>
+    	</div>
+    </section>
+
+	<!-- Section counter -->
+    <section class="ftco-section ftco-no-pt ftco-no-pb ftco-counter img" id="section-counter">
+    	<div class="container">
+				<div class="row d-md-flex align-items-center align-items-stretch">
+          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+            <div class="block-18 bg-light">
+              <div class="text">
+                <strong class="number" data-number="1100">0</strong>
+                <span>Copies Sold</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+            <div class="block-18 bg-light">
+              <div class="text">
+                <strong class="number" data-number="1200">0</strong>
+                <span>Copies Released</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+            <div class="block-18 bg-light">
+              <div class="text">
+                <strong class="number" data-number="340">0</strong>
+                <span>Cup Of Coffee</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+            <div class="block-18 bg-light">
+              <div class="text">
+                <strong class="number" data-number="12000">0</strong>
+                <span>Happy Readers</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+	<!-- Chapter section -->
+    <section class="ftco-section ftco-no-pb ftco-no-pt" id="chapter-section">
+    	<div class="container">
+    		<div class="row justify-content-center py-5 mt-5">
+          <div class="col-md-12 heading-section text-center ftco-animate">
+            <h2 class="mb-4">What's Inside The Book</h2>
+          </div>
+        </div>
+    		<div class="row">
+    			<div class="col-md-3 mb-4">
+				    <nav id="navi">
+					    <ul>
+					      <li><a href="#page-1">Title page</a></li>
+					      <li><a href="#page-2">Copyright</a></li>
+					      <li><a href="#page-3">Table of contents</a></li>
+					      <li><a href="#page-4">Dedication</a></li>
+					      <li><a href="#page-5">Foreword</a></li>
+					      <li><a href="#page-6">Prologue</a></li>
+					      <li><a href="#page-7">Epilogue</a></li>
+					      <li><a href="#page-8">Epigraph</a></li>
+					    </ul>
+					  </nav>
+					</div>
+					<div class="col-md-9">
+					  <div id="page-1" class= "page bg-light one">
+					  	<h2 class="heading">Title Page</h2>
+					  	<p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.</p>
+					  </div>
+					  <div id="page-2" class= "page bg-light two">
+					  	<h2 class="heading">Copyright</h2>
+					  	<p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.</p>
+					  </div>
+					  <div id="page-3" class= "page bg-light three">
+					  	<h2 class="heading">Table of Contents</h2>
+					  	<p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.</p>
+					  </div>
+					  <div id="page-4" class= "page bg-light four">
+					    <h2 class="heading">Dedication</h2>
+					    <p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.</p>
+					  </div>
+					  <div id="page-5" class= "page bg-light five">
+					    <h2 class="heading">Foreword</h2>
+					    <p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.</p>
+					  </div>
+					  <div id="page-6" class= "page bg-light six">
+					    <h2 class="heading">Prologue</h2>
+					    <p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.</p>
+					  </div>
+					  <div id="page-7" class= "page bg-light seven">
+					    <h2 class="heading">Epilogue</h2>
+					    <p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.</p>
+					  </div>
+					  <div id="page-8" class= "page bg-light eight">
+					    <h2 class="heading">Epigraph</h2>
+					    <p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.</p>
+					  </div>
+					</div>
+			  </div>
+    	</div>
+    </section>
+
+	<!-- Service section -->
+    <section class="ftco-section ftco-no-pt">
+    	<div class="container">
+    		<div class="row justify-content-center py-5 mt-5">
+          <div class="col-md-5 heading-section text-center ftco-animate">
+          	<span class="subheading">Services</span>
+            <h2 class="mb-4">Services</h2>
+          </div>
+        </div>
+    		<div class="row">
+					<div class="col-md-4 text-center d-flex ftco-animate">
+						<div class="services-1 bg-light">
+							<span class="icon">
+								<i class="flaticon-user-experience"></i>
+							</span>
+							<div class="desc">
+								<h3 class="mb-5">Experience</h3>
+								<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 text-center d-flex ftco-animate">
+						<div class="services-1 bg-light">
+							<span class="icon">
+								<i class="flaticon-network"></i>
+							</span>
+							<div class="desc">
+								<h3 class="mb-5">Marketing Goals</h3>
+								<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 text-center d-flex ftco-animate">
+						<div class="services-1 bg-light">
+							<span class="icon">
+								<i class="flaticon-innovation"></i>
+							</span>
+							<div class="desc">
+								<h3 class="mb-5">Targetting Vission</h3>
+								<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+    	</div>
+    </section>
+
+	<!-- Testimonial section -->
+    <section class="ftco-section testimony-section ftco-no-pb" id="testimonial-section">
+    	<div class="img img-bg border" style="background-image: url({{url_for('static', filename='images/bg_4.jpg')}});"></div>
+    	<div class="overlay"></div>
+      <div class="container">
+        <div class="row justify-content-center mb-5">
+          <div class="col-md-12 text-center heading-section heading-section-white ftco-animate">
+          	<span class="subheading">Testimonial</span>
+            <h2 class="mb-3">Kinds Words From Customers</h2>
+          </div>
+        </div>
+        <div class="row ftco-animate">
+          <div class="col-md-12">
+            <div class="carousel-testimony owl-carousel ftco-owl">
+              <div class="item">
+                <div class="testimony-wrap py-4">
+                	<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></div>
+                  <div class="text">
+                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    <div class="d-flex align-items-center">
+                    	<div class="user-img" style="background-image: url({{url_for('static', filename='images/person_1.jpg')}})"></div>
+                    	<div class="pl-3">
+		                    <p class="name">Roger Scott</p>
+		                    <span class="position">Marketing Manager</span>
+		                  </div>
+	                  </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimony-wrap py-4">
+                	<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></div>
+                  <div class="text">
+                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    <div class="d-flex align-items-center">
+                    	<div class="user-img" style="background-image: url({{url_for('static', filename='images/person_2.jpg')}})"></div>
+                    	<div class="pl-3">
+		                    <p class="name">Roger Scott</p>
+		                    <span class="position">Marketing Manager</span>
+		                  </div>
+	                  </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimony-wrap py-4">
+                	<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></div>
+                  <div class="text">
+                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    <div class="d-flex align-items-center">
+                    	<div class="user-img" style="background-image: url({{url_for('static', filename='images/person_3.jpg')}})"></div>
+                    	<div class="pl-3">
+		                    <p class="name">Roger Scott</p>
+		                    <span class="position">Marketing Manager</span>
+		                  </div>
+	                  </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimony-wrap py-4">
+                	<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></div>
+                  <div class="text">
+                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    <div class="d-flex align-items-center">
+                    	<div class="user-img" style="background-image: url({{url_for('static', filename='images/person_1.jpg')}})"></div>
+                    	<div class="pl-3">
+		                    <p class="name">Roger Scott</p>
+		                    <span class="position">Marketing Manager</span>
+		                  </div>
+	                  </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimony-wrap py-4">
+                	<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></div>
+                  <div class="text">
+                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    <div class="d-flex align-items-center">
+                    	<div class="user-img" style="background-image: url({{url_for('static', filename='images/person_2.jpg')}})"></div>
+                    	<div class="pl-3">
+		                    <p class="name">Roger Scott</p>
+		                    <span class="position">Marketing Manager</span>
+		                  </div>
+	                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+ 
+	<!-- Project section -->
+    <section class="ftco-section ftco-project" id="projects-section">
+    	<div class="container">
+    		<div class="row no-gutters justify-content-center pb-5">
+          <div class="col-md-12 heading-section text-center ftco-animate">
+          	<span class="subheading">Projects</span>
+            <h2 class="mb-4">My Other Books</h2>
+          </div>
+        </div>
+    		<div class="row">
+    			<div class="col-md-3">
+    				<div class="project img ftco-animate d-flex justify-content-center align-items-end" style="background-image: url({{url_for('static', filename='images/book-1.jpg')}});">
+    					<div class="overlay"></div>
+	    				<div class="text p-4">
+	    					<h3><a href="#">You Are Your Ony Limit</a></h3>
+	    					<span>Romance</span>
+	    				</div>
+    				</div>
+  				</div>
+  				<div class="col-md-3">
+    				<div class="project img ftco-animate d-flex justify-content-center align-items-end" style="background-image: url({{url_for('static', filename='images/book-2.jpg')}});">
+    					<div class="overlay"></div>
+	    				<div class="text p-4">
+	    					<h3><a href="#">You Are Your Ony Limit</a></h3>
+	    					<span>Romance</span>
+	    				</div>
+    				</div>
+  				</div>
+
+    			<div class="col-md-3">
+    				<div class="project img ftco-animate d-flex justify-content-center align-items-end" style="background-image: url({{url_for('static', filename='images/book-3.jpg')}});">
+    					<div class="overlay"></div>
+	    				<div class="text p-4">
+	    					<h3><a href="#">You Are Your Ony Limit</a></h3>
+	    					<span>Romance</span>
+	    				</div>
+    				</div>
+    			</div>
+    			<div class="col-md-3">
+    				<div class="project img ftco-animate d-flex justify-content-center align-items-end" style="background-image: url({{url_for('static', filename='images/book-4.jpg')}});">
+    					<div class="overlay"></div>
+	    				<div class="text p-4">
+	    					<h3><a href="#">You Are Your Ony Limit</a></h3>
+	    					<span>Romance</span>
+	    				</div>
+    				</div>
+    			</div>
+    			<div class="col-md-3">
+    				<div class="project img ftco-animate d-flex justify-content-center align-items-end" style="background-image: url({{url_for('static', filename='images/book-5.jpg')}});">
+    					<div class="overlay"></div>
+	    				<div class="text p-4">
+	    					<h3><a href="#">You Are Your Ony Limit</a></h3>
+	    					<span>Romance</span>
+	    				</div>
+    				</div>
+    			</div>
+    			<div class="col-md-3">
+    				<div class="project img ftco-animate d-flex justify-content-center align-items-end" style="background-image: url({{url_for('static', filename='images/book-7.jpg')}});">
+    					<div class="overlay"></div>
+	    				<div class="text p-4">
+	    					<h3><a href="#">You Are Your Ony Limit</a></h3>
+	    					<span>Romance</span>
+	    				</div>
+    				</div>
+    			</div>
+    			<div class="col-md-3">
+    				<div class="project img ftco-animate d-flex justify-content-center align-items-end" style="background-image: url({{url_for('static', filename='images/book-6.jpg')}});">
+    					<div class="overlay"></div>
+	    				<div class="text p-4">
+	    					<h3><a href="#">You Are Your Ony Limit</a></h3>
+	    					<span>Romance</span>
+	    				</div>
+    				</div>
+    			</div>
+    			<div class="col-md-3">
+    				<div class="project img ftco-animate d-flex justify-content-center align-items-end" style="background-image: url({{url_for('static', filename='images/book-8.jpg')}});">
+    					<div class="overlay"></div>
+	    				<div class="text p-4">
+	    					<h3><a href="#">You Are Your Ony Limit</a></h3>
+	    					<span>Romance</span>
+	    				</div>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    </section>
+
+	<!-- Author section -->
+	<section class="ftco-about img ftco-section ftco-no-pt ftco-no-pb" id="author-section">
+    	<div class="container">
+    		<div class="row d-flex no-gutters">
+    			<div class="col-md-6 col-lg-6 d-flex">
+    				<div class="img-about img d-flex align-items-stretch">
+    					<div class="overlay"></div>
+	    				<div class="img d-flex align-self-stretch align-items-center" style="background-image:url({{url_for('static', filename='img/irene-top.jpg')}});">
+	    				</div>
+    				</div>
+    			</div>
+    			<div class="col-md-6 col-lg-6 d-flex">
+    				<div class="py-md-5 w-100 bg-light px-md-5">
+    					<div class="py-md-5">
+		    				<div class="row justify-content-start pb-3">
+				          <div class="col-md-12 heading-section ftco-animate">
+				          	<span class="subheading">Know More About The Author</span>
+				            <h2 class="mb-4">Agung NH</h2>
+				            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+				            <ul class="about-info mt-4 px-md-0 px-2">
+				            	<li class="d-flex"><span>Name:</span> <span>Agung NH</span></li>
+				            	<li class="d-flex"><span>Date of birth:</span> <span>Sometime in that year, 1998</span></li>
+				            	<li class="d-flex"><span>Address:</span> <span>Yogyakarta, D.I.</span></li>
+				            	<li class="d-flex"><span>Zip code:</span> <span>55564</span></li>
+				            	<li class="d-flex"><span>Email:</span> <span>agungnhd@gmail.com</span></li>
+				            	<li class="d-flex"><span>Phone:</span> <span>+62-111-1111-1111</span></li>
+				            </ul>
+				          </div>
+				        </div>
+			          <div class="counter-wrap ftco-animate d-flex mt-md-3">
+		              <div class="text">
+		              	<p class="mb-4 btn-custom">
+			                <span class="number" data-number="120">0</span>
+			                <span>View All Books</span>
+		                </p>
+		              </div>
+			          </div>
+			        </div>
+		        </div>
+	        </div>
+        </div>
+    	</div>
+    </section>
+
+	<!-- Contact section -->
+    <section class="ftco-section contact-section ftco-no-pb" id="contact-section">
+      <div class="container">
+      	<div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+            <h2 class="mb-4">Contact Me</h2>
+            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+          </div>
+        </div>
+
+        <div class="row d-flex contact-info mb-5">
+          <div class="col-md-6 col-lg-3 d-flex ftco-animate">
+          	<div class="align-self-stretch box text-center p-4 bg-light">
+          		<div class="icon d-flex align-items-center justify-content-center">
+          			<span class="fa fa-map-marker"></span>
+          		</div>
+          		<div>
+	          		<h3 class="mb-4">Address</h3>
+		            <p>198 West 21th Street, Suite 721 New York NY 10016</p>
+		          </div>
+	          </div>
+          </div>
+          <div class="col-md-6 col-lg-3 d-flex ftco-animate">
+          	<div class="align-self-stretch box text-center p-4 bg-light">
+          		<div class="icon d-flex align-items-center justify-content-center">
+          			<span class="fa fa-phone"></span>
+          		</div>
+          		<div>
+	          		<h3 class="mb-4">Contact Number</h3>
+		            <p><a href="tel://1234567920">+ 1235 2355 98</a></p>
+	            </div>
+	          </div>
+          </div>
+          <div class="col-md-6 col-lg-3 d-flex ftco-animate">
+          	<div class="align-self-stretch box text-center p-4 bg-light">
+          		<div class="icon d-flex align-items-center justify-content-center">
+          			<span class="fa fa-paper-plane"></span>
+          		</div>
+          		<div>
+	          		<h3 class="mb-4">Email Address</h3>
+		            <p><a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
+		          </div>
+	          </div>
+          </div>
+          <div class="col-md-6 col-lg-3 d-flex ftco-animate">
+          	<div class="align-self-stretch box text-center p-4 bg-light">
+          		<div class="icon d-flex align-items-center justify-content-center">
+          			<span class="fa fa-globe"></span>
+          		</div>
+          		<div>
+	          		<h3 class="mb-4">Website</h3>
+		            <p><a href="#">yoursite.com</a></p>
+	            </div>
+	          </div>
+          </div>
+        </div>
+
+        <div class="row no-gutters block-9">
+          <div class="col-md-6 order-md-last d-flex">
+            <form action="#" class="bg-light p-4 p-md-5 contact-form">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Your Name">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Your Email">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Subject">
+              </div>
+              <div class="form-group">
+                <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+              </div>
+              <div class="form-group">
+                <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+              </div>
+            </form>
+          
+          </div>
+
+          <div class="col-md-6 d-flex">
+          	<div id="map" class="map"></div>
+          	<!-- <div class="img" style="background-image: url({{url_for('static', filename='images/about.jpg')}});"></div> -->
+          </div>
+        </div>
+      </div>
+	</section>
+
+<!-- End of Content -->
+{% endblock %}

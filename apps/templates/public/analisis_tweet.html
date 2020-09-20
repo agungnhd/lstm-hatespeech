@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+<!-- Block Head -->
+{% block head %}
+<title>LSTM-HateSpeech &mdash; by AgungNH</title>
+
+{% endblock %}
+
+<!-- Block Content -->
+{% block content %}
+
+	{% include 'feature.html' %}
+
+	<!-- Analysis section -->
+	<section class="img ftco-no-pt ftco-no-pb ftco-section" id="analysis-section">
+		<div class="container">
+			<div class="row d-flex no-gutters justify-content-center">
+				<!-- input -->
+				<div class="col-md-6 col-lg-6 d-flex">
+					<div class="row justify-content-start pb-3">
+						<div class="col-md-12 heading-section ftco-animate">
+							<h2 class="mb-4 text-center text-dark">Analisis Tweet</h2>
+							<h4 style="text-align:justify">
+								Analisis konten hate speech pada Tweet menggunakan model LSTM. 
+								<br>
+								Selengkapnya tentang <a href="/tentang_pengujian#about-section">pengujian</a> dan <a href="/tentang_model#about-section">model</a>.
+							</h4>
+							<div class="text-about">
+								<form action="/analisis_tweet#result-section" id="text" class="p-4 p-md-5 contact-form" method="POST">
+									<div class="form-group col-6">
+										<label for="tweet-count">Jumlah Tweet : </label>
+										<select class="custom-select custom-select-sm form-control form-control-sm" name="tweet-count" id="tweet-count">
+											<option value="10">10</option>
+											<option value="25">25</option>
+											<option value="50">50</option>
+											<option value="100">100</option>
+										</select> 
+									</div>
+									<div class="form-group">
+										<textarea name="twitter-search" id="twiter-search" cols="50" rows="3" class="form-control" placeholder="Input kata kunci pencarian Tweet"></textarea>
+									</div>
+									<div class="form-group">
+										<input type="submit" value="Analisis Tweet" class="btn btn-primary py-3 px-5">
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- result -->
+				{% if status %}
+				<div class="col-md-6 col-lg-6 pl-md-5" id="result-section">
+					<div class="row justify-content-start pb-3">
+						<div class="col-md-12 heading-section ftco-animate">
+							<h2 class="mb-4 text-dark">Hasil Analisis</h2>
+							<h4 style="text-align:justify">
+								Hasil analisis tweet hate speech menggunakan metode LSTM
+								dengan kata kunci pencarian "{{keyword}}" pada Twitter.
+							</h4>
+							<div class="text-about">
+								<h3 class="text-dark">Jumlah Total Tweets</h3>
+								<h4>{{ total_tweet }} Tweets</h4>
+								<h3 class="text-dark">Jumlah tweet Hate Speech</h3>
+								<h4>{{ prediction_count[1] }} Tweets</h4>
+								<h3 class="text-dark">Jumlah tweet Non Hate Speech</h3>
+								<h4>{{ prediction_count[0] }} Tweets</h4>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endif %}
+			</div>
+		</div>
+	</section>
+	
+	{% if status %}
+	<!-- Section counter -->
+	<section class="img ftco-no-pt ftco-no-pb ftco-section" id="table-section">
+		<div class="container">
+			<!-- result -->
+			<div class="row d-md-flex align-items-center align-items-stretch">
+				<div class="row justify-content-start pb-3">
+					<div class="col-md-12 heading-section ftco-animate">
+						<h2 class="mb-4 text-dark">Hasil Analisis</h2>
+						<div>
+							{{ table1 | safe }}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	{% endif %}
+
+<!-- End of Content -->
+{% endblock %}
