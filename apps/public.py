@@ -90,7 +90,13 @@ class app_public:
 
     # pengujian page
     def tentang_pengujian(self):
-        return render_template('public/tentang_pengujian.html')
+        try:
+            report = pd.read_excel('data/result_history/_validation_report.xlsx')
+            hasil = report[["accuracy", "precision", "recall", "f1"]].mean(axis=1)
+            hasil = round(hasil,2)
+            return render_template('public/tentang_pengujian.html', status = True, hasil1 = hasil)
+        except:
+            return render_template('public/tentang_pengujian.html', status=False)
 
     # model page
     def tentang_model(self):

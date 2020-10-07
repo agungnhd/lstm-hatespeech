@@ -17,13 +17,69 @@
     		<div class="row no-gutters">
     			<div class="col-md-12 col-lg-12 pl-md-5">
 					<div class="col-md-12 heading-section ftco-animate">
-						<h2 class="mb-4">Pengujian K-Fold Validation</h2>
-						<div class="img mx-auto col-md-9 col-lg-9">
-							<img src="{{url_for('static', filename='public/figures/validation_report.png')}}" class="img-fluid" alt="kfold_validation">
-						</div>
+						<h2 class="mb-4">Hasil Pengujian Model</h2>
+						<p style="text-align:justify">
+							Pengujian yang dilakukan terdiri dari pengujian model LSTM yang bertujuan untuk mengetahui tingkat <i>Accuracy</i>, <i>Precision</i>, <i>Recall</i> dan <i>F1-Score</i>. 
+							<i>Confusion Matrix</i> dibutuhkan dalam pengujian ini sebagai acuan dalam melakukan evaluasi performa dari LSTM. 
+							Pada penelitian ini, proses validasi dilakukan dengan menggunakan <i>K-Fold Cross Validation</i>.
+						</p>
 						<br>
 						<div class="text-about">
+							<h4>Rata-rata hasil pengujian Model LSTM dengan K-Fold Cross Validation</h4>
+							{% if status %}
+							<p>
+								<b>
+								<i>Accuracy</i> : {{ hasil1[0] }}%<br>
+								<i>Precision</i> : {{ hasil1[1] }}%<br>
+								<i>Recall</i> : {{ hasil1[2] }}%<br>
+								<i>F-Measure</i> : {{ hasil1[3] }}%
+								</b>
+							</p>
+							{% endif %}
+							
+							<div class="img mx-auto col-md-9 col-lg-9">
+								<h5 style="text-align:center">
+									Grafik K-Fold Cross Validation
+								</h5>
+								<img src="{{url_for('static', filename='public/figures/validation_report.png')}}" class="img-fluid" alt="kfold_reports">
+							</div>
+							<br>
+							<h4>Confusion Matrix</h4>
+							<div class="img mx-auto col-md-4 col-lg-4">
+								<img src="{{url_for('static', filename='public/images/confusion-matrix-1.png')}}" class="img-fluid" alt="confusion_matrix">
+							</div>
+							<p style="text-align:justify">
+								<i>Confusion Matrix</i> merepresentasikan prediksi dan kondisi sebenarnya (aktual) dari data yang dihasilkan oleh algoritma LSTM. 
+								<i>True Positive</i> (TP) merupakan hasil prediksi positif dan kondisi aktual juga positif. 
+								<i>True Negative</i> (TN) merupakan hasil prediksi negatif dan kondisi aktual juga negatif. 
+								<i>False Positve</i> (FP) merupakan hasil prediksi positif namun kondisi aktual negatif. 
+								<i>False Negative</i> (FN) merupakan hasil prediksi negatif namun kondisi aktual positif.
+							</p>
+							<h4>Accuracy</h4>
+							<p>
+								<i>Accuracy</i> adalah perbandingan antara kelas yang diprediksi dengan benar terhadap total data yang ada.
+								<br>Accuracy = TP+TN/TP+FP+FN+TN
+							</p>
+							<h4>Precision</h4>
+							<p>
+								<i>Precision</i> adalah perbandingan antara kelas yang diprediksi dengan benar terhadap total data yang terklasifikasikan suatu kelas.
+								<br>Precision = TP/TP+FP
+							</p>
+							<h4>Recall</h4>
+							<p>
+								<i>Recall</i> adalah perbandingan antara kelas yang diprediksi dengan benar terhadap total data yang ada pada suatu kelas.
+								<br>Recall = TP+TN/TP+FN
+							</p>
+							<h4>F-Measure</h4>
+							<p>
+								<i>F-Measure</i> adalah perbandingan rata-rata <i>Precision</i> dan <i>Recall</i>.
+								<br>F1-Score = 2*(Recall * Precision) / (Recall + Precision)
+							</p>
+							
 							<h4>K-Fold Cross Validation</h4>
+							<div class="img mx-auto col-md-9 col-lg-9">
+								<img src="{{url_for('static', filename='public/images/kfolds-1.png')}}" class="img-fluid" alt="kfold_validation">
+							</div>
 							<p style="text-align:justify">
 								<i>Cross-validation</i> adalah prosedur resampling yang digunakan untuk melakukan evaluasi model <i>deep learning</i> pada data sampel yang terbatas. 
 								<i>Cross-validation</i> digunakan dalam <i>deep learning</i> untuk memperkirakan performa dari model <i>deep learning</i> pada data yang tertutup. 
@@ -34,26 +90,6 @@
 								Pada iterasi pertama, fold pertama digunakan untuk menguji model dan sisanya digunakan untuk melatih model. 
 								Pada iterasi kedua, fold ke-2 digunakan sebagai set pengujian, sedangkan lipatan lainnya berfungsi sebagai set pelatihan. 
 								Proses ini diulangi sampai setiap lipatan dari 5 lipatan telah digunakan sebagai set pengujian.
-							</p>
-							<h4>Accuracy</h4>
-							<p>
-								Accuracy adalah tingkat kedekatan antara nilai prediksi dengan nilai aktual.
-								<br>Accuracy = TP+TN/TP+FP+FN+TN
-							</p>
-							<h4>Precision</h4>
-							<p>
-								Precision adalah tingkat ketepatan antara informasi yang diminta oleh pengguna dengan jawaban yang diberikan oleh sistem.
-								<br>Precision = TP/TP+FP
-							</p>
-							<h4>Recall</h4>
-							<p>
-								Recall adalah tingkat keberhasilan sistem dalam menemukan kembali sebuah informasi
-								<br>Recall = TP/TP+FN
-							</p>
-							<h4>F-Measure</h4>
-							<p>
-								F-Measure merupakan salah satu perhitungan evalusasi dalam informasi temu kembali yang mengkombinasikan recall dan precission.
-								<br>F1-Score = 2*(Recall * Precision) / (Recall + Precision)
 							</p>
 						</div>
 					</div>

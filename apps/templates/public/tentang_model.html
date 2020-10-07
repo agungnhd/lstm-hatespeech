@@ -43,7 +43,7 @@
 								Keunggulan metode LSTM dibandingkan dengan RNN adalah adanya arsitektur mengingat dan melupakan output yang akan diproses kembali menjadi input. 
 								Selain itu, keunggulan lain yang dimiliki oleh metode ini adalah adanya kemampuan untuk mempertahankan error saat melakukan <i>backpropagation</i> yang memungkinkan kesalahan yang terjadi tidak akan mengalami peningkatan (Zhang, 2016).
 							</p>
-							<div class="img mx-auto col-lg-3">
+							<div class="img mx-auto col-lg-2">
 								<img src="{{url_for('static', filename='public/images/LSTM3-gate.png')}}" class="img-fluid" alt="lstm-chain">
 							</div><br>
 							<p style="text-align:justify"> 
@@ -75,9 +75,17 @@
 								<img src="{{url_for('static', filename='public/images/LSTM3-focus-C.png')}}" class="img-fluid" alt="lstm-chain">
 							</div><br>
 							<p style="text-align:justify"> 
-								Langkah ketiga adalah memperbaharui nilai cell state. 
+								Langkah selanjutnya adalah memperbaharui nilai cell state. 
 								Kedua nilai yang telah dihasilkan pada langkah kedua kemudian akan dikalikan untuk memperbarui cell state. 
 								Memori baru ini kemudian akan ditambahkan ke memori lama yang dilambangkan dengan 𝐶𝑡−1 dan akan menghasilkan memori yang baru yang dilambangkan 𝐶𝑡.
+							</p>
+							<div class="img mx-auto col-lg-9">
+								<img src="{{url_for('static', filename='public/images/LSTM3-focus-o.png')}}" class="img-fluid" alt="lstm-chain">
+							</div><br>
+							<p style="text-align:justify"> 
+								Pada langkah terakhir, nilai output yang dilambangkan ℎ𝑡 bersumber dari nilai pada sel output yang dilambangkan dengan 𝑂𝑡 yang telah mengalami proses pemfilteran. 
+								Pertama lapisan sigmoid memutuskan bagian sel mana yang menjadi output. 
+								Selanjutnya, output dari gerbang sigmoid (𝑂𝑡) dikalikan dengan nilai baru yang dihasilkan oleh lapisan tanh dari cell state (𝐶𝑡), nilai yang dihasilkan berkisar antara -1 sampai 1. 
 							</p>
 						</div>
 					</div>
