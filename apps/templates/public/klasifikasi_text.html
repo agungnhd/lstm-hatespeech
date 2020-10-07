@@ -1,0 +1,71 @@
+{% extends 'public/base.html' %}
+
+<!-- Block Head -->
+{% block head %}
+<title>LSTM-HateSpeech &mdash; by AgungNH</title>
+
+{% endblock %}
+
+<!-- Block Content -->
+{% block content %}
+
+	{% include 'public/feature.html' %}
+
+	<!-- Analysis section -->
+	<section class="img ftco-no-pt ftco-no-pb ftco-section" id="analysis-section">
+		<div class="container">
+			<div class="row d-flex no-gutters justify-content-center">
+				<!-- input -->
+				<div class="col-md-6 col-lg-6 d-flex">
+					<div class="row justify-content-start pb-3">
+						<div class="col-md-12 heading-section ftco-animate">
+							<h2 class="mb-4 text-center text-dark">Klasifikasi Teks</h2>
+							<h4 style="text-align:justify">
+								Klasifikasi teks <i>hate speech</i> pada kalimat menggunakan model LSTM. 
+								<br>
+								Selengkapnya tentang <a href="/tentang_model#about-section">model</a> dan <a href="/tentang_pengujian#about-section">pengujian</a>.
+							</h4>
+							<div class="text-about">
+								<form action="/klasifikasi_text#result-section" id="text" class="p-4 p-md-5 contact-form" method="POST">
+									<div class="form-group">
+										<textarea name="text" id="text" cols="50" rows="6" class="form-control" placeholder="Input Teks yang akan diklasifikasi"></textarea>
+									</div>
+									<div class="form-group">
+										<input type="submit" value="Klasifikasi Teks" class="btn btn-primary py-3 px-5">
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- result -->
+				{% if status %}
+				<div class="col-md-6 col-lg-6 pl-md-5" id="result-section">
+					<div class="row justify-content-start pb-3">
+						<div class="col-md-12 heading-section ftco-animate">
+							<h2 class="mb-4 text-dark">Hasil Klasifikasi</h2>
+							<div class="text-about">
+								<h3 class="text-dark">Teks Input</h3>
+								<h4>
+									{{ text }}
+								</h4>
+								<h3 class="text-dark">Probabilitas</h3>
+								<h4>
+									{{ probability[1] }}% Hate Speech <br>
+									{{ probability[0] }}% Non Hate Speech
+								</h4>
+								<h3 class="text-dark">Prediksi</h3>
+								<h4>
+									{{ prediction }}
+								</h4>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endif %}
+			</div>
+		</div>
+	</section>
+
+<!-- End of Content -->
+{% endblock %}

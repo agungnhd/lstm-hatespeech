@@ -19,13 +19,13 @@ def index():
 def about():
     return public.about()
 
-@app.route('/analisis_text', methods=['GET','POST'])
-def analisis_text():
-    return public.analisis_text()
+@app.route('/klasifikasi_text', methods=['GET','POST'])
+def klasifikasi_text():
+    return public.klasifikasi_text()
 
-@app.route('/analisis_tweet', methods=['GET','POST'])
-def analisis_tweet():
-    return public.analisis_tweet()
+@app.route('/klasifikasi_tweet', methods=['GET','POST'])
+def klasifikasi_tweet():
+    return public.klasifikasi_tweet()
 
 @app.route('/tentang_pengujian')
 def tentang_pengujian():

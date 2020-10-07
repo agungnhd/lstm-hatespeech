@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'public/base.html' %}
 
 <!-- Block Head -->
 {% block head %}
@@ -9,7 +9,7 @@
 <!-- Block Content -->
 {% block content %}
 
-	{% include 'feature.html' %}
+	{% include 'public/feature.html' %}
 
 	<!-- About section -->
     <section class="ftco-about img ftco-section" id="about-section">
@@ -19,7 +19,7 @@
 					<div class="col-md-12 heading-section ftco-animate">
 						<h2 class="mb-4">Pengujian K-Fold Validation</h2>
 						<div class="img mx-auto col-md-9 col-lg-9">
-							<img src="{{url_for('static', filename='figures/validation_report.png')}}" class="img-fluid" alt="kfold_validation">
+							<img src="{{url_for('static', filename='public/figures/validation_report.png')}}" class="img-fluid" alt="kfold_validation">
 						</div>
 						<br>
 						<div class="text-about">
@@ -61,8 +61,6 @@
 			</div>
     	</div>
 	</section>
-	
-	{% include '/public/maintenance.html' %}
 
 <!-- End of Content -->
 {% endblock %}

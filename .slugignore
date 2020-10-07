@@ -1,7 +1,5 @@
 #.slugignore
 /.vscode
-/apps/_source
 /data/result_history
-/database
 /model/history
 /raw-data

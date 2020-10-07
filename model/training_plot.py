@@ -17,5 +17,5 @@ plt.style.use('ggplot')
 sns_fig = sns.lineplot(x='epoch', y='percentage', hue='loss_acc', data=df_sns, palette="muted")
 
 
-sns_fig.figure.savefig('static/figures/training_report.png', dpi=600)
+sns_fig.figure.savefig('apps/static/public/figures/training_report.png', dpi=600)
 print(colored("Figure saved", "green"))

@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'public/base.html' %}
 
 <!-- Block Head -->
 {% block head %}
@@ -14,62 +14,28 @@
 		<div class="overlay"></div><!-- Remove overlay to enable desktop start click -->
 		<div class="container-fluid px-0">
 			<div class="row d-md-flex no-gutters slider-text align-items-center js-fullheight justify-content-end">
-				<img class="one-third js-fullheight align-self-end order-md-last img-fluid" src="{{url_for('static', filename='images/deep-learning.svg')}}" alt="deep-learning">
+				<img class="one-third js-fullheight align-self-end order-md-last img-fluid" src="{{url_for('static', filename='public/images/deep-learning.svg')}}" alt="deep-learning">
 				<div class="one-forth d-flex align-items-center ftco-animate js-fullheight">
 					<div class="text mt-5">
 						<span class="subheading">Web Apps by AgungNH</span>
 						<h1 class="text-dark">LSTM<span>-HateSpeech</span></h1>
-						<h3 class="text-dark">Implementasi Long-Short Term Memory untuk Analisis Teks Hate Speech pada Twitter</h3>
-						<h4 class="text-dark">Pelajari lebih lanjut atau mulai analisis.</h4>
-						<p><a href="#feature-section" class="btn btn-primary py-3 px-4">Mulai Analisis</a></p>
+						<h3 class="text-dark">Implementasi Long-Short Term Memory untuk Klasifikasi Teks Hate Speech pada Twitter</h3>
+						<h4 class="text-dark">Pelajari lebih lanjut atau mulai klasifikasi.</h4>
+						<p><a href="#feature-section" class="btn btn-primary py-3 px-4">Mulai Klasifikasi</a></p>
 					</div>
 				</div>
 			</div>
 		</div>
     </section>
 
-	{% include 'feature.html' %}
-
-	<!-- About section -->
-    <section class="ftco-about img ftco-section" id="about-section">
-    	<div class="container">
-    		<div class="row d-flex no-gutters">
-    			<div class="col-md-6 col-lg-6 d-flex">
-    				<div class="img-about img d-flex align-items-stretch">
-    					<div class="overlay"></div>
-	    				<div class="img d-flex align-self-stretch align-items-center" style="background-image:url({{url_for('static', filename='images/bg_1.jpg')}});"></div>
-    				</div>
-    			</div>
-    			<div class="col-md-6 col-lg-6 pl-md-5">
-    				<div class="row justify-content-start pb-3">
-						<div class="col-md-12 heading-section ftco-animate">
-							<h2 class="mb-4">Tentang Penelitian</h2>
-							<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-							<div class="text-about">
-								<h4>Abstract</h4>
-								<p>
-									Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. 
-									Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.
-								</p>
-								<h4>Abstrak</h4>
-								<p>
-									Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. 
-									Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-    	</div>
-    </section>
+	{% include 'public/feature.html' %}
 
 	<!-- Chapter section -->
     <section class="ftco-section ftco-no-pb ftco-no-pt" id="chapter-section">
     	<div class="container">
     		<div class="row justify-content-center py-5 mt-5">
 				<div class="col-md-12 heading-section text-center ftco-animate">
-					<h2 class="mb-4">What's Inside The Book</h2>
+					<h2 class="mb-4">Tentang Penelitian</h2>
 				</div>
         	</div>
     		<div class="row">
@@ -91,7 +57,7 @@
 					<div id="page-1" class= "page one">
 						<h2 class="heading">Judul</h2>
 						<p style="text-align:justify">
-							Implementasi algoritma <i>Long Short Term Memory</i> (LSTM) untuk analisis teks <i>hate speech</i> pada media sosial Twitter.
+							Implementasi <i>Long Short Term Memory</i> (LSTM) untuk klasifikasi teks <i>hate speech</i> pada Twitter.
 						</p>
 					</div>
 					<div id="page-2" class= "page two">
@@ -100,56 +66,60 @@
 							<i>Hate speech</i> atau ujaran kebencian adalah suatu bentuk ekspresi yang menyebar, menghasut, mempromosikan atau membenarkan kebencian, kekerasan dan diskriminasi terhadap seseorang atau sekelompok orang karena berbagai alasan (Davidson et al., 2017). 
 							Hal tersebut melanggar undang-undang sesuai dengan ketentuan Pasal 28 ayat (2) UU ITE yang berbunyi “Setiap Orang dengan sengaja dan tanpa hak menyebarkan informasi yang ditujukan untuk menimbulkan rasa kebencian atau permusuhan individu dan/atau kelompok masyarakat tertentu berdasarkan atas suku, agama, ras, dan antar golongan (SARA).” 
 							Kasus hate speech sering dijumpai di media sosial khususnya twitter berdampak buruk bagi semua pengguna. 
-							Pada penelitian sebelumnya telah dilakukan analisis teks hate speech pada media sosial, namun terdapat beberapa perbedaan serta kekurangan yang menjadi bahan evaluasi untuk dapat dilakukan penelitian agar memberikan hasil yang lebih optimal.
+							Pada penelitian sebelumnya telah dilakukan klasifikasi teks hate speech pada media sosial, namun terdapat beberapa perbedaan serta kekurangan yang menjadi bahan evaluasi untuk dapat dilakukan penelitian agar memberikan hasil yang lebih optimal.
 						</p>
 					</div>
 					<div id="page-3" class= "page three">
 						<h2 class="heading">Perumusan Masalah</h2>
 						<p style="text-align:justify">
-							Berdasarkan latar belakang yang telah dipaparkan, maka dapat diambil rumusan masalah dalam penelitian ini adalah bagaimana implementasi dan performa algoritma <i>Long Short Term Memory</i> (LSTM) untuk analisis teks <i>hate speech</i> pada media sosial Twitter.
+							Berdasarkan latar belakang yang telah dipaparkan, maka dapat diambil rumusan masalah dalam penelitian ini adalah bagaimana implementasi dan performa algoritma <i>Long Short Term Memory</i> (LSTM) untuk klasifikasi teks <i>hate speech</i> pada media sosial Twitter.
 						</p>
 					</div>
 					<div id="page-4" class= "page four">
 						<h2 class="heading">Batasan Masalah</h2>
 						<p style="text-align:justify">
-							- Data penelitian didapatkan dari penelitian sebelumnya dengan penambahan data yang diperoleh dari Twitter yang dilakukan pelabelan sesuai anotasi pada penelitian tersebut.<br>
+							- Data penelitian didapatkan dari penelitian terdahulu dengan penambahan data yang diperoleh dari Twitter yang dilakukan pelabelan sesuai anotasi pada penelitian tersebut.<br>
 							- Data penelitian tambahan yang digunakan dari tahun 2019 sampai 2020.<br>
 							- Data penelitian yang digunakan berbahasa Indonesia.<br>
-							- Pada penelitian ini akan dilakukan identifikasi kalimat yang memiliki kecenderungan <i>hate speech</i> atau <i>non hate speech</i>.<br>
+							- Pada penelitian ini akan dilakukan klasifikasi teks yang memiliki kecenderungan <i>hate speech</i> atau <i>non hate speech</i>.<br>
+							- Metode learning yang digunakan dalam penelitian adalah Supervised Learning.
 						</p>
 					</div>
 					<div id="page-5" class= "page five">
 						<h2 class="heading">Tujuan Penelitian</h2>
 						<p style="text-align:justify">
-							Tujuan pada penelitian ini adalah mengukur performa dari metode <i>Long Short Term Memory</i> (LSTM) dalam implementasinya untuk analisis teks <i>hate speech</i> pada media sosial twitter.
+							Tujuan pada penelitian ini adalah mengukur performa dari metode <i>Long Short Term Memory</i> (LSTM) dalam implementasinya untuk klasifikasi teks <i>hate speech</i> pada media sosial Twitter.
 						</p>
 					</div>
 					<div id="page-6" class= "page six">
 						<h2 class="heading">Manfaat Penelitian</h2>
 						<p style="text-align:justify">
-							Diharapkan dengan adanya penelitian ini dapat mengetahui performa algoritma <i>Long Short Term Memory</i> dalam menyelesaikan permasalahan tentang analisis teks <i>hate speech</i> speech pada media sosial Twitter. 
-							Selain itu, dengan adanya sistem ini dapat memudahkan pengguna media sosial khususnya twitter dalam menentukan teks mana yang termasuk dalam kategori <i>hate speech</i> atau <i>non hate speech</i>. Sehingga dampak dari <i>hate speech</i> speech pada media sosial dapat diminimalisir.
+							Diharapkan dengan adanya penelitian ini dapat mengetahui performa algoritma <i>Long Short Term Memory</i> dalam menyelesaikan permasalahan tentang klasifikasi teks <i>hate speech</i> speech pada media sosial Twitter. 
+							Selain itu, dengan adanya sistem ini dapat membantu pengguna media sosial khususnya twitter dalam menentukan teks mana yang termasuk dalam kategori <i>hate speech</i> atau <i>non hate speech</i>.
 						</p>
 					</div>
 					<div id="page-7" class= "page seven">
-						<h2 class="heading">Tentang Pengujian</h2>
-						<p style="text-align:justify">
-							Pengujian model dilakukan dengan tujuan mengetahui performa dari algoritma LSTM untuk analisis teks <i>hate speech</i> pada media sosial Twitter. 
-							Pengukuran performa dilakukan dengan menggunakan K-Flod <i>Cross Validation</i> pada skenario pengujian sebanyak lima kali. 
-							<br>Selengkapnya tentang <a href="/tentang_pengujian#about-section">pengujian</a>.
-						</p>
-					</div>
-					<div id="page-8" class= "page eight">
 						<h2 class="heading">Tentang Model</h2>
 						<p style="text-align:justify">
 							Model <i>deep learning</i> yang digunakan dalam penelitian ini adalah <i>Long Short Term Memory</i> (LSTM) yang juga merupakan jenis modul pemrosesan lain untuk <i>Recurrent Neural Network</i> (RNN).
 							<br>Selengkapnya tentang <a href="/tentang_model#about-section">model</a>.
 						</p>
 					</div>
+					<div id="page-8" class= "page eight">
+						<h2 class="heading">Tentang Pengujian</h2>
+						<p style="text-align:justify">
+							Pengujian model dilakukan dengan tujuan mengetahui performa dari algoritma LSTM untuk klasifikasi teks <i>hate speech</i> pada media sosial Twitter. 
+							Pengukuran performa dilakukan dengan menggunakan K-Flod <i>Cross Validation</i> pada skenario pengujian sebanyak lima kali dengan metrics <i>Accuracy</i>, <i>Precision</i>, <i>Recall</i> dan <i>F1-Score</i>. 
+							<br>Selengkapnya tentang <a href="/tentang_pengujian#about-section">pengujian</a>.
+						</p>
+						
+					</div>
 				</div>
 			</div>
     	</div>
-    </section>
+	</section>
+	
+	{% include 'public/feature.html' %}
 
 	<!-- Author section -->
 	<section class="ftco-about img ftco-section" id="author-section">
@@ -158,7 +128,7 @@
     			<div class="col-md-6 col-lg-6 d-flex">
     				<div class="img-about img d-flex align-items-stretch">
     					<div class="overlay"></div>
-	    				<div class="img d-flex align-self-stretch align-items-center" style="background-image:url({{url_for('static', filename='images/irene-top.jpg')}});">
+	    				<div class="img d-flex align-self-stretch align-items-center" style="background-image:url({{url_for('static', filename='public/images/agungnhd-1.jpg')}});">
 	    				</div>
     				</div>
     			</div>
@@ -175,8 +145,7 @@
 										<li class="d-flex"><span>Company:</span> <span>UPN "Veteran" Yogyakarta</span></li>
 										<li class="d-flex"><span>Address:</span> <span>Yogyakarta, D.I.</span></li>
 										<li class="d-flex"><span>Zip code:</span> <span>55283</span></li>
-										<li class="d-flex"><span>Email:</span> <span>agungnhd@upnyk.ac.id</span></li>
-										<li class="d-flex"><span>Phone:</span> <span>+62-111-1111-1111</span></li>
+										<li class="d-flex"><span>Email:</span> <span>123160075@student.upnyk.ac.id</span></li>
 									</ul>
 								</div>
 				        	</div>

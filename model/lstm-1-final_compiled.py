@@ -9,19 +9,16 @@ from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 from keras.models import load_model
 
+from sklearn.model_selection import StratifiedKFold
+from sklearn.metrics import make_scorer, accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
+
 import pandas as pd
-
 import numpy as np
-
 import pickle
 
 import time
 
-from sklearn.model_selection import StratifiedKFold
-from sklearn.metrics import make_scorer, accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
-
 import matplotlib.pyplot as plt
-
 import seaborn as sns
 
 from termcolor import colored
@@ -30,7 +27,7 @@ from termcolor import colored
 class lstm_final:
 
     def __init__(self):
-        #Google Colab self.Base_Path
+        #Base_Path Configuration
         #self.BASE_PATH = '/content/gdrive/My Drive/agungnhd-lstmsentiment/'
         self.BASE_PATH = ''
 
@@ -41,21 +38,19 @@ class lstm_final:
 
     # Load data
     def __load_dataset(self):
-        print(colored("Loading train and test data", "yellow"))
         self.train_data = pd.read_excel('{}data/preprocessed_dataset.xlsx'.format(self.BASE_PATH))
+        print(colored("Dataset loaded", "green"))
 
     # Tokenization
     def __tokenization(self):
         train_data = self.train_data
 
-        print(colored("Tokenizing and padding data", "yellow"))
         tokenizer = Tokenizer(num_words = 2000, split = ' ')
         tokenizer.fit_on_texts(train_data['text'].astype(str).values)
         tokenized_data = tokenizer.texts_to_sequences(train_data['text'].astype(str).values)
         max_len = max([len(i) for i in tokenized_data])
         tokenized_data = pad_sequences(tokenized_data, maxlen = max_len)
-        
-        print(colored("Tokenizing and padding completed", "green"))
+        print(colored("Tokenizing and padding complete", "green"))
 
         with open('{}model/history/_tokenizer.pickle'.format(self.BASE_PATH), 'wb') as handle:
             pickle.dump(tokenizer, handle, protocol=pickle.HIGHEST_PROTOCOL)
@@ -92,15 +87,15 @@ class lstm_final:
         X_train = tokenized_data
         Y_train = pd.get_dummies(train_data['sentiment']).values
 
-        history = model.fit(X_train, Y_train, epochs = n_epoch, batch_size = 128)
+        history = model.fit(X_train, Y_train, epochs = n_epoch, batch_size = 1024)
         print(colored(history, "green"))
 
         with open('{}model/history/_trainHistoryDict'.format(self.BASE_PATH), 'wb') as file_pi:
             pickle.dump(history.history, file_pi)
         with open('{0}model/history/trainHistoryDict-{1}'.format(self.BASE_PATH, self.timestr), 'wb') as file_pi:
             pickle.dump(history.history, file_pi)
-        
         print(colored("Training History saved", "green"))
+
         self.history = history
         self.model = model
     
@@ -137,15 +132,14 @@ class lstm_final:
 
             # Compile model
             model.compile(loss = 'binary_crossentropy', optimizer = 'adam', metrics = ['accuracy'])
-            #model.summary()
 
             # Fit the model
-            model.fit(X[train], pd.get_dummies(Y[train]).values, epochs = n_epoch, batch_size = 128)
+            model.fit(X[train], pd.get_dummies(Y[train]).values, epochs = n_epoch, batch_size = 1024, validation_data=(X[test], pd.get_dummies(Y[test]).values))
 
-            # evaluate the model
+            # Evaluate the model
             
             # Predict classes
-            pred_class = model.predict_classes(X[test], batch_size=128)
+            pred_class = model.predict_classes(X[test], batch_size=1024)
             pred_class = pred_class.flatten()
             
             # accuracy: (tp + tn) / (p + n)
@@ -192,7 +186,7 @@ class lstm_final:
         self.model.save("{0}model/history/lstm-model-{1}.h5".format(self.BASE_PATH, self.timestr))
         print(colored("LSTM Model saved", "green"))
 
-    # training lstm model
+
     def main(self, n_epoch):
         self.__load_dataset()
         self.__tokenization()
@@ -203,7 +197,6 @@ class lstm_final:
 
         keras.backend.clear_session()
     
-    # model evaluation only
     def validation(self, n_epoch, n_kfold):
         self.__load_dataset()
         self.__tokenization()
@@ -215,10 +208,13 @@ class lstm_final:
     def debug(self):
         print(self.BASE_PATH)
 
+lstm = lstm_final()
+lstm.main(20)
+#lstm.validation(20,5)
+
 
 #
 # 
 #
 # main(jumlah_epoch) -> build and save
 # validation(jumlah_epoch, jumlah_kfold) -> build and evaluate
-

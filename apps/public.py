@@ -21,7 +21,7 @@ class app_public:
 
     # 404 not found
     def page_not_found(self, e):
-        return render_template('404.html'), 404
+        return render_template('public/404.html'), 404
 
     # index page
     def index(self):
@@ -31,8 +31,8 @@ class app_public:
     def about(self):
         return render_template('public/about.html')
 
-    # analisis teks page
-    def analisis_text(self):
+    # klasifikasi teks page
+    def klasifikasi_text(self):
 
         if request.method  == 'POST':
             try:
@@ -44,18 +44,18 @@ class app_public:
                 prediction, probability = self.predict.predict_text(preprocessed_text)
 
                 print(colored("Summary : '{0}', '{1}', '{2}'".format(prediction, probability, preprocessed_text), "green"))
-                return render_template('public/analisis_text.html', status=True,
+                return render_template('public/klasifikasi_text.html', status=True,
                                                                     text=text,
                                                                     prediction=prediction, 
                                                                     probability=probability
                                                                     )
             except:
-                return render_template('public/analisis_text.html', status=False)
+                return render_template('public/klasifikasi_text.html', status=False)
         else:
-            return render_template('public/analisis_text.html', status=False)
+            return render_template('public/klasifikasi_text.html', status=False)
 
-    # analisis tweet page
-    def analisis_tweet(self):
+    # klasifikasi tweet page
+    def klasifikasi_tweet(self):
 
         if request.method  == 'POST':
             try:
@@ -77,16 +77,16 @@ class app_public:
                 table = tweets.to_html().replace('<table','<table class="table dataframe table-bordered" id="dataTable" width="100%" cellspacing="0"')
 
                 print(colored("Summary : '{0}', '{1}', '{2}'".format(text, total_tweet, prediction_count), "green"))
-                return render_template('public/analisis_tweet.html', status = True,
+                return render_template('public/klasifikasi_tweet.html', status = True,
                                                                     keyword=text,
                                                                     table1=table,
                                                                     total_tweet=total_tweet,
                                                                     prediction_count=prediction_count
                                                                     )
             except:
-                return render_template('public/analisis_tweet.html', status=False)
+                return render_template('public/klasifikasi_tweet.html', status=False)
         else:
-            return render_template('public/analisis_tweet.html', status=False)
+            return render_template('public/klasifikasi_tweet.html', status=False)
 
     # pengujian page
     def tentang_pengujian(self):

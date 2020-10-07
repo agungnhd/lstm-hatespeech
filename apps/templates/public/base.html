@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		
+		<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		
+		<link rel="stylesheet" href="{{url_for('static', filename='public/css/animate.css')}}">
+		
+		<link rel="stylesheet" href="{{url_for('static', filename='public/css/owl.carousel.min.css')}}">
+		<link rel="stylesheet" href="{{url_for('static', filename='public/css/owl.theme.default.min.css')}}">
+		<link rel="stylesheet" href="{{url_for('static', filename='public/css/magnific-popup.css')}}">
+		
+		<link rel="stylesheet" href="{{url_for('static', filename='public/css/flaticon.css')}}">
+		<link rel="stylesheet" href="{{url_for('static', filename='public/css/style.css')}}">
+
+		<!-- Block Head -->
+		{% block head %}{% endblock %}
+		<link rel="icon" href="{{url_for('static', filename='public/images/deep-learning-icon.png')}}" type="image/icon type">
+
+	</head>
+	<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+		
+		<!-- Navbar --> 
+		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
+			<div class="container">
+				<a class="navbar-brand" href="/">LSTM<span>-HateSpeech</span></a>
+				<button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="oi oi-menu"></span> Menu
+				</button>
+				<div class="collapse navbar-collapse" id="ftco-nav">
+					<ul class="navbar-nav nav ml-auto">
+						<li class="nav-item"><a href="/#" class="nav-link"><span>Home</span></a></li>
+						<li class="nav-item"><a href="/tentang_model" class="nav-link"><span>Model</span></a></li>
+						<li class="nav-item"><a href="/tentang_pengujian" class="nav-link"><span>Pengujian</span></a></li>
+						<li class="nav-item"><a href="/klasifikasi_tweet" class="nav-link"><span>Klasifikasi Tweet</span></a></li>
+						<li class="nav-item"><a href="/klasifikasi_text" class="nav-link"><span>Klasifikasi Teks</span></a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		
+		<!-- Main Content -->
+		{% block content %}{% endblock %}
+
+		<!-- Footer section -->
+		<footer class="ftco-footer ftco-section ftco-no-pb">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 text-center">
+								<p>Copyright &copy; Agung NH <script>document.write(new Date().getFullYear());</script>. All rights reserved | Designed by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
+						</div>
+					</div>
+				</div>
+		</footer>
+		
+		
+		<!-- loader -->
+		<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+		
+		<script src="{{url_for('static', filename='public/js/jquery.min.js')}}"></script>
+		<script src="{{url_for('static', filename='public/js/jquery-migrate-3.0.1.min.js')}}"></script>
+		<script src="{{url_for('static', filename='public/js/popper.min.js')}}"></script>
+		<script src="{{url_for('static', filename='public/js/bootstrap.min.js')}}"></script>
+		<script src="{{url_for('static', filename='public/js/jquery.easing.1.3.js')}}"></script>
+		<script src="{{url_for('static', filename='public/js/jquery.waypoints.min.js')}}"></script>
+		<script src="{{url_for('static', filename='public/js/jquery.stellar.min.js')}}"></script>
+		<script src="{{url_for('static', filename='public/js/owl.carousel.min.js')}}"></script>
+		<script src="{{url_for('static', filename='public/js/jquery.magnific-popup.min.js')}}"></script>
+		<script src="{{url_for('static', filename='public/js/jquery.animateNumber.min.js')}}"></script>
+		<script src="{{url_for('static', filename='public/js/scrollax.min.js')}}"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+		<script src="{{url_for('static', filename='public/js/google-map.js')}}"></script>
+		
+		<script src="{{url_for('static', filename='public/js/main.js')}}"></script>
+
+		<!-- dataTables -->
+		<!-- Page level plugins -->
+		<script src="{{url_for('static', filename='admin/vendor/datatables/jquery.dataTables.min.js')}}"></script>
+		<script src="{{url_for('static', filename='admin/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
+		<!-- Page level custom scripts -->
+		<script src="{{url_for('static', filename='admin/js/demo/datatables-demo.js')}}"></script>
+				
+	</body>
+</html>

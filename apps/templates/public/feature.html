@@ -1,0 +1,33 @@
+{% block feature %} 
+<!-- Feature section -->
+<section class="ftco-section ftco-partner" id="feature-section">
+    <div class="container d-flex justify-content-center mt-5">
+        <div class="row col-md-9">
+            <a href="/tentang_model#about-section" class="col-md-12 col-lg ftco-animate d-flex justify-content-center">
+                <div class="partner col-sm-9">
+                    <img src="{{url_for('static', filename='public/images/deep-learning-1.png')}}" class="img-fluid mx-auto d-block" alt="Tentang Model">
+                    <h3 class="text-center">Tentang Model</h3>
+                </div>
+            </a>
+            <a href="/tentang_pengujian#about-section" class="col-md-12 col-lg ftco-animate d-flex justify-content-center">
+                <div class="partner col-sm-9">
+                    <img src="{{url_for('static', filename='public/images/accuracy-1.png')}}" class="img-fluid mx-auto d-block" alt="Tentang Pengujian">
+                    <h3 class="text-center">Tentang Pengujian</h3>
+                </div>
+            </a>
+            <a href="/klasifikasi_tweet#analysis-section" class="col-md-12 col-lg ftco-animate d-flex justify-content-center">
+                <div class="partner col-sm-9">
+                    <img src="{{url_for('static', filename='public/images/twitter-1.png')}}" class="img-fluid mx-auto d-block" alt="Klasifikasi Tweet">
+                    <h3 class="text-center">Klasifikasi Tweet</h3>
+                </div>
+            </a>
+            <a href="/klasifikasi_text#analysis-section" class="col-md-12 col-lg ftco-animate d-flex justify-content-center">
+                <div class="partner col-sm-9">
+                    <img src="{{url_for('static', filename='public/images/text-1.png')}}" class="img-fluid mx-auto d-block" alt="Klasifikasi Text">
+                    <h3 class="text-center">Klasifikasi Teks</h3>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -56,7 +56,7 @@ class lstm_pretrained:
         tweets = self.tokenizer.texts_to_sequences(tweets)
         tweets = pad_sequences(tweets, maxlen=119, dtype='int32', value=0)
         # prediction
-        prediction = self.model.predict(tweets, batch_size=8, verbose = 0)
+        prediction = self.model.predict(tweets, batch_size=32, verbose = 0)
         sentiment_count = [0,0]
         encode_label = []
         for i in range(len(prediction)):

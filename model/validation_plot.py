@@ -17,5 +17,5 @@ plt.style.use('ggplot')
 sns_fig = sns.catplot(x='K', y='percentage', hue='metrics', data=df_sns, kind='bar', palette="muted")
 
 
-sns_fig.savefig('static/figures/validation_report.png', dpi=600)
+sns_fig.savefig('apps/static/public/figures/validation_report.png', dpi=600)
 print(colored("Figure saved", "green"))
