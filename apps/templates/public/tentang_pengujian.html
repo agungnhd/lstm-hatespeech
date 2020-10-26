@@ -2,7 +2,7 @@
 
 <!-- Block Head -->
 {% block head %}
-<title>LSTM-HateSpeech &mdash; by AgungNH</title>
+<title>Tentang Pengujian &mdash; by AgungNH</title>
 
 {% endblock %}
 
@@ -32,7 +32,7 @@
 								<i>Accuracy</i> : {{ hasil1[0] }}%<br>
 								<i>Precision</i> : {{ hasil1[1] }}%<br>
 								<i>Recall</i> : {{ hasil1[2] }}%<br>
-								<i>F-Measure</i> : {{ hasil1[3] }}%
+								<i>F1-Score</i> : {{ hasil1[3] }}%
 								</b>
 							</p>
 							{% endif %}
@@ -68,7 +68,7 @@
 							<h4>Recall</h4>
 							<p>
 								<i>Recall</i> adalah perbandingan antara kelas yang diprediksi dengan benar terhadap total data yang ada pada suatu kelas.
-								<br>Recall = TP+TN/TP+FN
+								<br>Recall = TP/TP+FN
 							</p>
 							<h4>F-Measure</h4>
 							<p>

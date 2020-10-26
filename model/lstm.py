@@ -24,13 +24,13 @@ class lstm_pretrained:
 
     # load tokenizer
     def __load_tokenizer(self):
-        with open('model/tokenizer.pickle', 'rb') as handle:
+        with open('model/history/_tokenizer.pickle', 'rb') as handle:
             tokenizer = pickle.load(handle)
         self.tokenizer = tokenizer
 
     # load model
     def __myload_model(self):
-        loaded_model = load_model('model/lstm-model.h5')
+        loaded_model = load_model('model/history/_lstm-model.h5')
         loaded_model.compile(loss = 'binary_crossentropy', optimizer = 'adam', metrics = ['accuracy'])
         self.model = loaded_model
 

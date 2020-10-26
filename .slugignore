@@ -1,4 +1,3 @@
 #.slugignore
 /.vscode
-/model/history
 /raw-data
