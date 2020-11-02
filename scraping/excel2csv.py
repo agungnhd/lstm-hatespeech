@@ -1,4 +1,4 @@
 import pandas as pd
 
-read_file = pd.read_excel (r'data/clean_trainx.xlsx')
-read_file.to_csv (r'data/clean_trainx-csv.csv', index = None, header=None)
+read_file = pd.read_excel (r'raw-data/new_dataset.xlsx')
+read_file.to_csv (r'raw-data/new_dataset.csv', index = None, header=None)
