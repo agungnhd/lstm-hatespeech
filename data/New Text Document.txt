@@ -1,0 +1,2 @@
+Excel Words count
+=LEN(TRIM(B2))-LEN(SUBSTITUTE(B2;" ";""))+1

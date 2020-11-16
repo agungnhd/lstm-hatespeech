@@ -48,8 +48,8 @@ class lstm_final:
         tokenizer = Tokenizer(num_words = 2000, split = ' ')
         tokenizer.fit_on_texts(train_data['text'].astype(str).values)
         tokenized_data = tokenizer.texts_to_sequences(train_data['text'].astype(str).values)
-        max_len = max([len(i) for i in tokenized_data])
-        tokenized_data = pad_sequences(tokenized_data, maxlen = max_len)
+        #max_len = max([len(i) for i in tokenized_data])
+        tokenized_data = pad_sequences(tokenized_data, maxlen = 64)
         print(colored("Tokenizing and padding completed", "green"))
 
         with open('{}model/history/_tokenizer.pickle'.format(self.BASE_PATH), 'wb') as handle:
@@ -63,18 +63,18 @@ class lstm_final:
     # Building the model
     def __build_model(self):
 
-        tokenized_data = self.tokenized_data
+        #data_shape = self.tokenized_data.shape[1]
 
         print(colored("Creating the LSTM model", "yellow"))
         model = Sequential()
-        model.add(Embedding(2000, 128, input_length = tokenized_data.shape[1]))
-        model.add(SpatialDropout1D(0.4))
-        model.add(LSTM(256, dropout = 0.2))
+        model.add(Embedding(2000, 32, input_length = 64))
+        model.add(SpatialDropout1D(0.8))
+        model.add(LSTM(32, dropout = 0.8))
         model.add(Dense(2, activation = 'sigmoid'))
         model.compile(loss = 'binary_crossentropy', optimizer = 'adam', metrics = ['accuracy'])
         model.summary()
 
-        self.model = model
+        return model
 
     # Training the model
     def __training_model(self, n_epoch):
@@ -83,7 +83,7 @@ class lstm_final:
         tokenized_data = self.tokenized_data
         train_data = self.train_data
 
-        print(colored("Training the LSTM model", "yellow"))
+        print(colored("Training the LSTM model (main)", "yellow"))
         X_train = tokenized_data
         Y_train = pd.get_dummies(train_data['sentiment']).values
 
@@ -114,28 +114,20 @@ class lstm_final:
         X = tokenized_data
         Y = train_data['sentiment']
 
-        # define 10-fold cross validation test harness
         kfold = StratifiedKFold(n_splits=n_kfold, shuffle=True, random_state=seed)
         
         results = []
+        train_val_history = []
         
         fold_count = 1
         for train, test in kfold.split(X, Y):
             print(colored("Fold-{}".format(fold_count), "green"))
-            fold_count = fold_count+1
             
-            #Create model
-            model = Sequential()
-            model.add(Embedding(2000, 128, input_length = X.shape[1]))
-            model.add(SpatialDropout1D(0.4))
-            model.add(LSTM(256, dropout = 0.2))
-            model.add(Dense(2, activation = 'sigmoid'))
-
-            # Compile model
-            model.compile(loss = 'binary_crossentropy', optimizer = 'adam', metrics = ['accuracy'])
+            # Create model for each fold
+            model = self.__build_model()
 
             # Fit the model
-            model.fit(X[train], pd.get_dummies(Y[train]).values, epochs = n_epoch, batch_size = 256, validation_data=(X[test], pd.get_dummies(Y[test]).values))
+            history = model.fit(X[train], pd.get_dummies(Y[train]).values, epochs = n_epoch, batch_size = 256, validation_data=(X[test], pd.get_dummies(Y[test]).values))
 
             # Evaluate the model
             
@@ -143,24 +135,31 @@ class lstm_final:
             pred_class = model.predict_classes(X[test], batch_size=256)
             pred_class = pred_class.flatten()
             
-            # accuracy: (tp + tn) / (p + n)
-            accuracy = accuracy_score(Y[test], pred_class)
+            print(colored("Fold-{} Performance".format(fold_count), "green"))
+            accuracy = accuracy_score(Y[test], pred_class) # accuracy: (tp + tn) / (p + n)
             print('Accuracy: %f' % accuracy)
-            # precision: tp / (tp + fp)
-            precision = precision_score(Y[test], pred_class)
+            precision = precision_score(Y[test], pred_class) # precision: tp / (tp + fp)
             print('Precision: %f' % precision)
-            # recall: tp / (tp + fn)
-            recall = recall_score(Y[test], pred_class)
+            recall = recall_score(Y[test], pred_class) # recall: tp / (tp + fn)
             print('Recall: %f' % recall)
-            # f1: 2 tp / (2 tp + fp + fn)
-            f1 = f1_score(Y[test], pred_class)
+            f1 = f1_score(Y[test], pred_class) # f1: 2 tp / (2 tp + fp + fn)
             print('F1 score: %f' % f1)
             
+            train_val_history.append(pd.DataFrame(history.history))
+
             temp = [fold_count-1, accuracy*100, precision*100, recall*100, f1*100]
             results.append(temp)
 
+            fold_count = fold_count+1
+
         report = pd.DataFrame(data=results, columns=["K", "accuracy", "precision", "recall", "f1"])
         
+        df_concat = pd.concat(train_val_history)
+        by_row_index = df_concat.groupby(df_concat.index)
+        history_avg = by_row_index.mean()
+
+        self.validation_history = history_avg
+
         self.validation_report = report
 
     # save validation report to excel
@@ -174,12 +173,20 @@ class lstm_final:
     def __save_training_report(self):
         # save report
         history_df = pd.DataFrame(self.history.history)
-        history_df['loss'] = history_df['loss']*100
-        history_df['accuracy'] = history_df['accuracy']*100
         history_df.insert(loc=0, column='epoch', value=history_df.index+1)
         history_df.to_excel("{0}data/result_history/_training_report.xlsx".format(self.BASE_PATH))
         history_df.to_excel("{0}data/result_history/training_report-{1}.xlsx".format(self.BASE_PATH, self.timestr))
         self.training_report = history_df
+        print(colored("Training Report saved", "green"))
+    
+    # save training report to excel
+    def __save_training_val_report(self):
+        # save report
+        history_df = pd.DataFrame(self.validation_history)
+        history_df.insert(loc=0, column='epoch', value=history_df.index+1)
+        history_df.to_excel("{0}data/result_history/_val_training_report.xlsx".format(self.BASE_PATH))
+        history_df.to_excel("{0}data/result_history/val_training_report-{1}.xlsx".format(self.BASE_PATH, self.timestr))
+        self.validation_training_report = history_df
         print(colored("Training Report saved", "green"))
 
     # save model and architecture to single file (.h5)
@@ -192,6 +199,7 @@ class lstm_final:
     def __validation_plot(self):
         #reshape dataframe
         df_sns = pd.melt(self.validation_report, id_vars="K", var_name="metrics", value_name="percentage")
+        plt.figure()
         plt.style.use('ggplot')
         sns_fig = sns.catplot(x='K', y='percentage', hue='metrics', data=df_sns, kind='bar', palette="muted")
         sns_fig.savefig("{0}data/figure_history/_validation_report.png".format(self.BASE_PATH), dpi=600)
@@ -201,29 +209,41 @@ class lstm_final:
     def __training_plot(self):
         #reshape dataframe
         df_sns = pd.melt(self.training_report, id_vars="epoch", var_name="loss_acc", value_name="percentage")
+        plt.figure()
         plt.style.use('ggplot')
         sns_fig = sns.lineplot(x='epoch', y='percentage', hue='loss_acc', data=df_sns, palette="muted")
+        sns_fig.set(ylabel=None)
         sns_fig.figure.savefig("{0}data/figure_history/_training_report.png".format(self.BASE_PATH), dpi=600)
         sns_fig.figure.savefig("{0}data/figure_history/training_report-{1}.png".format(self.BASE_PATH, self.timestr), dpi=600)
         print(colored("Figure saved", "green"))
 
+    def __validation_training_plot(self):
+        #reshape dataframe
+        df_sns = pd.melt(self.validation_training_report, id_vars="epoch", var_name="loss_acc_validation", value_name="percentage")
+        plt.figure()
+        plt.style.use('ggplot')
+        sns_fig = sns.lineplot(x='epoch', y='percentage', hue='loss_acc_validation', data=df_sns, palette="muted")
+        sns_fig.set(ylabel=None)
+        sns_fig.figure.savefig("{0}data/figure_history/_validation_training_report.png".format(self.BASE_PATH), dpi=600)
+        sns_fig.figure.savefig("{0}data/figure_history/validation_training_report-{1}.png".format(self.BASE_PATH, self.timestr), dpi=600)
+        print(colored("Figure saved", "green"))
+
 
     def training(self, n_epoch):
-        self.__build_model()
+        self.model = self.__build_model()
         self.__training_model(n_epoch)
         self.__save_model()
         self.__save_training_report()
         self.__training_plot()
-
-        keras.backend.clear_session()
     
     def validation(self, n_epoch, n_kfold):
         self.__kfold_validation(n_epoch, n_kfold)
         self.__save_validation_report()
         self.__validation_plot()
 
-        keras.backend.clear_session()
-    
+        self.__save_training_val_report()
+        self.__validation_training_plot()
+
 
     def main(self, n_epoch, n_kfold):
         # data preparations
@@ -233,11 +253,13 @@ class lstm_final:
         self.training(n_epoch) # build and save
         self.validation(n_epoch,n_kfold) # build and evaluate
 
+        keras.backend.clear_session()
+
     def debug(self):
         print(self.BASE_PATH)
 
 lstm = lstm_final()
-lstm.main(10, 5)
-# 
-# 
-# 
+lstm.main(50, 5)
+# main(epoch, fold)
+# best model :
+# embedding 32 units, lstm 32 units, each with dropout 0.8, epochs 20
