@@ -4,15 +4,20 @@ import pandas as pd
 import re
 import sys
 
+import nltk
+#nltk.download('stopwords')
+from nltk.corpus import stopwords
+list_stopwords = set(stopwords.words('indonesian'))
 
-data = pd.read_csv('data-hs/re_dataset.csv', encoding='latin-1')
-data = data.head(20)
 
-columns = ['Abusive','HS_Individual','HS_Group','HS_Religion','HS_Race','HS_Physical','HS_Gender','HS_Other','HS_Weak','HS_Moderate','HS_Strong']
-data = data.drop(columns, axis='columns')
-data = data.rename(columns={'Tweet': 'text', 'HS': 'sentiment'})
+data = pd.read_csv('raw-data/new_dataset.csv', encoding='latin-1')
+#data = data.head(20)
 
-alay_dict = pd.read_csv('data-hs/new_kamusalay.csv', encoding='latin-1', header=None)
+#columns = ['Abusive','HS_Individual','HS_Group','HS_Religion','HS_Race','HS_Physical','HS_Gender','HS_Other','HS_Weak','HS_Moderate','HS_Strong']
+#data = data.drop(columns, axis='columns')
+#data = data.rename(columns={'Tweet': 'text', 'HS': 'sentiment'})
+
+alay_dict = pd.read_csv('raw-data/data_hs/new_kamusalay.csv', encoding='latin-1', header=None)
 alay_dict = alay_dict.rename(columns={0: 'original', 
                                       1: 'replacement'})
 
@@ -40,14 +45,19 @@ alay_dict_map = dict(zip(alay_dict['original'], alay_dict['replacement']))
 def normalize_alay(text):
     return ' '.join([alay_dict_map[word] if word in alay_dict_map else word for word in text.split(' ')])
 
-#def remove_stopword(text):
-#    text = ' '.join(['' if word in id_stopword_dict.stopword.values else word for word in text.split(' ')])
-#    text = re.sub('  +', ' ', text) # Remove extra spaces
-#    text = text.strip()
-#    return text
+def remove_stopword(text):
+    text = ' '.join(['' if word in list_stopwords else word for word in text.split(' ')])
+    text = re.sub('  +', ' ', text) # Remove extra spaces
+    text = text.strip()
+    return text
 
 def stemming(text):
     return stemmer.stem(text)
+
+def regex(text):
+    rx = r"\s*(?:\\x[A-Fa-f0-9]{2})+"
+    text = re.sub(rx, '', text)
+    return text
 
 def preprocess(text):
 
@@ -62,11 +72,14 @@ def preprocess(text):
     #stemming
     text = stemming(text) # 4
     #remove_stopword
-    #text = remove_stopword(text) # 5
+    text = remove_stopword(text) # 5
     return text
+
+data['text'] = data['text'].apply(str)
+data['text'] = data['text'].apply(regex) # fix codex error
 
 data['text'] = data['text'].apply(preprocess)
 
-data.to_csv('preprocessed_dataset.csv', index=False)
-data.to_excel('preprocessed_dataset.xlsx')
+data.to_csv('data/new_preprocessed_dataset.csv', index=False)
+data.to_excel('data/new_preprocessed_dataset.xlsx')
 

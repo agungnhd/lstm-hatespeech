@@ -1,0 +1,3 @@
+twitterscraper "keywords" --output data.csv --limit 1400 --begindate 2020-01-01 --enddate 2020-03-16 --csv
+
+twitterscraper "indonesia" --output testing.json --limit 4086 --begindate 2019-10-01 --enddate 2020-03-25

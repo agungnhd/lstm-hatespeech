@@ -36,9 +36,9 @@ class lstm_pretrained:
 
     # text prediction
     def __kalimat(self, kalimat):
-        # tokenization
+        # tokenizing
         kalimat = self.tokenizer.texts_to_sequences(kalimat)
-        kalimat = pad_sequences(kalimat, maxlen=119, dtype='int32', value=0)
+        kalimat = pad_sequences(kalimat, maxlen=48, dtype='int32', value=0)
         # prediction
         probability = self.model.predict(kalimat, batch_size=1, verbose = 0)[0]
         probability[0] = round(probability[0],2)*100
@@ -52,9 +52,9 @@ class lstm_pretrained:
 
     # tweets prediction
     def __tweets(self, tweets):
-        # tokenization
+        # tokenizing
         tweets = self.tokenizer.texts_to_sequences(tweets)
-        tweets = pad_sequences(tweets, maxlen=119, dtype='int32', value=0)
+        tweets = pad_sequences(tweets, maxlen=48, dtype='int32', value=0)
         # prediction
         prediction = self.model.predict(tweets, batch_size=32, verbose = 0)
         sentiment_count = [0,0]

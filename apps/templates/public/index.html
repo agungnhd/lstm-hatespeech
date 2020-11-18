@@ -17,9 +17,9 @@
 				<img class="one-third js-fullheight align-self-end order-md-last img-fluid" src="{{url_for('static', filename='public/images/deep-learning.svg')}}" alt="deep-learning">
 				<div class="one-forth d-flex align-items-center ftco-animate js-fullheight">
 					<div class="text mt-5">
-						<span class="subheading">Prototype 2.1</span>
+						<span class="subheading">Prototype 2.3</span>
 						<h1 class="text-dark">LSTM<span>-HateSpeech</span></h1>
-						<h3 class="text-dark">Implementasi Long-Short Term Memory untuk Klasifikasi Teks Hate Speech pada Media Sosial Twitter</h3>
+						<h3 class="text-dark">Deep Learning untuk Klasifikasi Teks Hate Speech menggunakan Algoritma Long Short Term Memory</h3>
 						<h4 class="text-dark">Selengkapnya <a href="#chapter-section">tentang penelitian</a> atau mulai <a href="#feature-section">klasifikasi</a>.</h4>
 					</div>
 				</div>
@@ -56,7 +56,7 @@
 					<div id="page-1" class= "page one">
 						<h2 class="heading">Judul</h2>
 						<p style="text-align:justify">
-							Implementasi <i>Long Short Term Memory</i> untuk Klasifikasi Teks <i>Hate Speech</i> pada Media Sosial Twitter.
+							<i>Deep Learning</i> untuk Klasifikasi Teks <i>Hate Speech</i> menggunakan Algoritma <i>Long Short Term Memory</i>.
 						</p>
 					</div>
 					<div id="page-2" class= "page two">
@@ -64,37 +64,51 @@
 						<p style="text-align:justify">
 							<i>Hate speech</i> atau ujaran kebencian adalah suatu bentuk ekspresi yang menyebar, menghasut, mempromosikan atau membenarkan kebencian, kekerasan dan diskriminasi terhadap seseorang atau sekelompok orang karena berbagai alasan (Davidson et al., 2017). 
 							Hal tersebut melanggar undang-undang sesuai dengan ketentuan Pasal 28 ayat (2) UU ITE yang berbunyi “Setiap Orang dengan sengaja dan tanpa hak menyebarkan informasi yang ditujukan untuk menimbulkan rasa kebencian atau permusuhan individu dan/atau kelompok masyarakat tertentu berdasarkan atas suku, agama, ras, dan antar golongan (SARA).” 
-							Kasus hate speech sering dijumpai di media sosial khususnya twitter berdampak buruk bagi semua pengguna. 
-							Pada penelitian sebelumnya telah dilakukan klasifikasi teks hate speech pada media sosial, namun terdapat beberapa perbedaan serta kekurangan yang menjadi bahan evaluasi untuk dapat dilakukan penelitian agar memberikan hasil yang lebih optimal.
+							Kasus <i>hate speech</i> sering dijumpai di media sosial khususnya twitter berdampak buruk bagi semua pengguna. 
+							Pada penelitian sebelumnya telah dilakukan klasifikasi teks <i>hate speech</i> pada media sosial, namun terdapat beberapa perbedaan serta kekurangan yang menjadi bahan evaluasi untuk dapat dilakukan penelitian agar memberikan hasil yang lebih optimal.
 						</p>
 					</div>
 					<div id="page-3" class= "page three">
 						<h2 class="heading">Perumusan Masalah</h2>
 						<p style="text-align:justify">
-							Berdasarkan latar belakang yang telah dipaparkan, maka dapat diambil rumusan masalah dalam penelitian ini adalah bagaimana membangun model <i>Long Short Term Memory</i> dan bagaimana performa algoritma <i>Long Short Term Memory</i> untuk klasifikasi teks <i>hate speech</i> pada media sosial Twitter.
+							Berdasarkan latar belakang yang telah dipaparkan, maka dapat diambil rumusan masalah dalam penelitian ini adalah sebagai berikut:<br>
+							<ul>
+								<li>Bagaimana mengenali pola-pola pada teks untuk melakukan klasifikasi teks <i>hate speech</i> menggunakan algoritma <i>Long-Short Term Memory</i>.</li>
+								<li>Bagaimana tingkat performa dari algoritma <i>Long-Short Term Memory</i>> dalam melakukan klasifikasi teks <i>hate speech</i>.</li>
+							</ul>
 						</p>
 					</div>
 					<div id="page-4" class= "page four">
 						<h2 class="heading">Batasan Masalah</h2>
 						<p style="text-align:justify">
-							- Data penelitian didapatkan dari penelitian terdahulu dengan penambahan data yang diperoleh dari Twitter yang dilakukan pelabelan sesuai anotasi pada penelitian tersebut.<br>
-							- Data penelitian tambahan yang digunakan dari tahun 2019 sampai 2020.<br>
-							- Data penelitian yang digunakan berbahasa Indonesia.<br>
-							- Akan dilakukan klasifikasi teks yang memiliki kecenderungan <i>hate speech</i> atau <i>non hate speech</i>.<br>
-							- Pengujian performa menggunakan <i>K-Fold Cross Validation</i> dengan <i>metrics</i> <i>Accuracy</i>, <i>Precision</i>, <i>Recall</i> dan <i>F-Measure</i> pada model LSTM yang telah dibuat.
+							<ul>
+								<li>Data penelitian didapatkan dari penelitian terdahulu dengan penambahan data yang diperoleh dari Twitter yang dilakukan pelabelan sesuai anotasi pada penelitian tersebut.</li>
+								<li>Data penelitian tambahan yang digunakan dari tahun 2019 sampai 2020.</li>
+								<li>Data penelitian yang digunakan berbahasa Indonesia.</li>
+								<li>Akan dilakukan klasifikasi teks yang memiliki kecenderungan <i>hate speech</i> atau <i>non hate speech</i>.</li>
+								<li>Pengujian performa menggunakan <i>K-Fold Cross Validation</i> dengan <i>metrics</i> <i>Accuracy</i>, <i>Precision</i>, <i>Recall</i> dan <i>F-Measure</i> pada model LSTM yang telah dibuat.</li>
+							</ul>
 						</p>
 					</div>
 					<div id="page-5" class= "page five">
 						<h2 class="heading">Tujuan Penelitian</h2>
 						<p style="text-align:justify">
-							Tujuan pada penelitian ini adalah membangun model <i>deep learning</i> menggunakan <i>Long-Short Term Memory</i> untuk klasifikasi teks <i>hate speech</i> pada media sosial Twitter serta menguji performa dari algoritma <i>Long-Short Term Memory</i> untuk klasifikasi teks <i>hate speech</i> pada media sosial Twitter.
+							Tujuan pada penelitian ini adalah sebagai berikut:<br>
+							<ul>
+								<li>Dapat mengenali pola-pola teks untuk klasifikasi teks <i>hate speech</i> menggunakan algoritma <i>Long-Short Term Memory</i>.</li>
+								<li>Dapat mengetahui tingkat performa dari algoritma <i>Long-Short Term Memory</i> untuk klasifikasi teks <i>hate speech</i>.</li>
+							</ul>
 						</p>
 					</div>
 					<div id="page-6" class= "page six">
 						<h2 class="heading">Manfaat Penelitian</h2>
 						<p style="text-align:justify">
-							Diharapkan dengan adanya penelitian ini dapat diketahui implementasi serta performa algoritma <i>Long Short Term Memory</i> dalam menyelesaikan permasalahan tentang klasifikasi teks <i>hate speech</i> speech pada media sosial Twitter. 
-							Penelitian ini juga dapat digunakan sebagai referensi para peneliti atau pengembang yang akan menggunakan algoritma LSTM untuk klasifikasi teks dengan mempertimbangkan Accuracy, Precision, Recall dan F1-Score.
+							Manfaat yang dapat diperoleh dari penelitian ini adalah:<br>
+							<ul>
+								<li>Dapat diketahui implementasi serta performa dari algoritma <i>Long-Short Term Memory</i> dalam menyelesaikan permasalahan tentang klasifikasi teks <i>hate speech</i>.</li>
+								<li>Sebagai referensi para peneliti atau pengembang yang akan menggunakan algoritma LSTM untuk klasifikasi teks dengan mempertimbangkan <i>Accuracy</i>, <i>Precision</i>, <i>Recall</i> dan <i>F-Measure</i>.</li>
+								<li>Diharapkan dengan adanya system ini dapat memudahkan pengguna media sosial dalam menentukan suatu teks termasuk <i>hate speech</i> atau bukan, sehingga kasus <i>hate speech</i> dapat diminimalisasi.</li>
+							</ul>
 						</p>
 					</div>
 					<div id="page-7" class= "page seven">

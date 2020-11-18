@@ -23,9 +23,15 @@
 							<i>Confusion Matrix</i> dibutuhkan dalam pengujian ini sebagai acuan dalam melakukan evaluasi performa dari LSTM. 
 							Pada penelitian ini, proses validasi dilakukan dengan menggunakan <i>K-Fold Cross Validation</i>.
 						</p>
+						<p style="text-align:justify">
+							Pengujian model yang akan dilakukan pada penelitian ini menggunakan <i>K-Fold Cross Validation</i>. 
+							Proses pengujian yang dilakukan menggunakan nilai k=5 yang artinya terdapat 5-<i>fold</i>/bagian pada dataset. 
+							Pada 5-<i>fold cross validation</i>, data akan dibagi menjadi 5 subset dengan ukuran yang sama dengan data yang berbeda. 
+							Pada setiap iterasi k, satu bagian digunakan untuk data uji sedangkan sisanya digunakan untuk data latih, sehingga rasio pembagian dataset adalah 80% data latih dan 20% data uji. 
+						</p>
 						<br>
 						<div class="text-about">
-							<h4>Rata-rata hasil pengujian Model LSTM dengan K-Fold Cross Validation</h4>
+							<h4>Hasil pengujian Model LSTM dengan konfigurasi terbaik</h4>
 							{% if status %}
 							<p>
 								<b>
@@ -41,7 +47,7 @@
 								<h5 style="text-align:center">
 									Grafik K-Fold Cross Validation
 								</h5>
-								<img src="{{url_for('static', filename='public/figures/validation_report.png')}}" class="img-fluid" alt="kfold_reports">
+								<img src="{{url_for('static', filename='public/figures/_validation_report.png')}}" class="img-fluid" alt="kfold_reports">
 							</div>
 							<br>
 							<h4>Confusion Matrix</h4>

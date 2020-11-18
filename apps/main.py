@@ -38,3 +38,13 @@ def tentang_model():
 @app.route('/test', methods=['GET','POST'])
 def test():
     return public.test()
+
+# ceks
+
+@app.route('/dataset_scraping', methods=['GET','POST'])
+def dataset_scraping():
+    return public.dataset_scraping()
+
+@app.route('/klasifikasi_data', methods=['GET','POST'])
+def klasifikasi_data():
+    return public.klasifikasi_data()

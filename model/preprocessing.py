@@ -5,6 +5,10 @@ import pandas as pd
 
 from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
 
+#nltk.download('stopwords')
+from nltk.corpus import stopwords
+list_stopwords = set(stopwords.words('indonesian'))
+
 from termcolor import colored
 
 
@@ -45,6 +49,12 @@ class preprocessing:
 
     def normalization(self, text):
         return ' '.join([self.slang_dict_map[word] if word in self.slang_dict_map else word for word in text.split(' ')])
+
+    def remove_stopword(self, text):
+        text = ' '.join(['' if word in list_stopwords else word for word in text.split(' ')])
+        text = re.sub('  +', ' ', text) # Remove extra spaces
+        text = text.strip()
+        return text
     
     # text preprocessing
     def text_preprocessing(self, text):
@@ -52,6 +62,7 @@ class preprocessing:
         text = self.text_cleaning(text)
         text = self.normalization(text)
         text = self.stemming(text)
+        text = self.remove_stopword(text)
         # preprocessing finished
         return text
     
@@ -72,8 +83,8 @@ class preprocessing:
         print(colored("Tweets preprocessed", "green"))
         return data
 
-    # public, dataset preprocessing. Currently unused and will be removed on future update
-    def dataset(self, data):
+    # public, dataset preprocessing
+    def clean_dataset(self, data):
         data['text'] = data['text'].apply(self.remove_newline)
         data['text'] = data['text'].apply(self.text_preprocessing)
         # dataset preprocessed

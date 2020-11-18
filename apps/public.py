@@ -92,7 +92,7 @@ class app_public:
     def tentang_pengujian(self):
         try:
             report = pd.read_excel('data/result_history/_validation_report.xlsx')
-            hasil = report[["accuracy", "precision", "recall", "f1"]].mean(axis=1)
+            hasil = report[["accuracy", "precision", "recall", "f1"]].mean(axis=0)
             hasil = round(hasil,2)
             return render_template('public/tentang_pengujian.html', status = True, hasil1 = hasil)
         except:
@@ -108,3 +108,45 @@ class app_public:
             return render_template('public/test.html')
         else:
             return render_template('public/test.html')
+
+    # bunch scraping, tesing purpose only
+    def dataset_scraping(self):
+        try:
+            query = pd.read_excel ('raw-data/dataset_query.xlsx')
+            print(query)
+
+            data_tweet = []
+            for index, row in query.iterrows():
+                print(index)
+                temp = self.tweetscrap.get_tweet(row['query'], 20)
+                data_tweet.append(temp)
+            
+            dataset = pd.concat(data_tweet)
+
+            print(dataset)
+
+            dataset.to_excel('raw-data/additional_dataset.xlsx')
+
+
+            return render_template('public/index.html')
+        except:
+            return render_template('public/index.html')
+
+    # klasifikasi data page
+    def klasifikasi_data(self):
+
+        try:
+            data = pd.read_excel('raw-data/extra_dataset.xlsx')
+
+            data = self.preprocess.clean_tweet(data)
+            preprocessed_data = data['preprocessed_text'].tolist()
+            prediction, _ = self.predict.predict_tweets(preprocessed_data)
+
+            data['prediction'] = prediction
+            print(data)
+
+            data.to_excel('raw-data/plus_dataset.xlsx')
+
+            return render_template('public/index.html')
+        except:
+            return render_template('public/index.html')
