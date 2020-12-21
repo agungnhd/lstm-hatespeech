@@ -1,3 +1,4 @@
 #.slugignore
 /.vscode
 /raw-data
+/model/raw_1

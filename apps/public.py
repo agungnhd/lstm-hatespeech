@@ -102,6 +102,7 @@ class app_public:
     def tentang_model(self):
         return render_template('public/tentang_model.html')
 
+#test section
     # test page, tesing purpose only
     def test(self):
         if request.method  == 'POST':

@@ -18,6 +18,26 @@
     			<div class="col-md-12 col-lg-12 pl-md-5">
 					<div class="col-md-12 heading-section ftco-animate">
 						<h2 class="mb-4">Hasil Pengujian Model</h2>
+						<h4>Hasil pengujian Model LSTM dengan konfigurasi terbaik</h4>
+							{% if status %}
+							<p>
+								<b>
+								<i>Accuracy</i> : {{ hasil1[0] }}%<br>
+								<i>Precision</i> : {{ hasil1[1] }}%<br>
+								<i>Recall</i> : {{ hasil1[2] }}%<br>
+								<i>F1-Score</i> : {{ hasil1[3] }}%
+								</b>
+							</p>
+							{% endif %}
+							<br>
+						<p style="text-align:justify">
+							Model akhir yang digunakan pada pengujian memiliki arsitektur yang ditunjukkan pada halaman <a href="/tentang_model#about-section">Tentang Model</a>. 
+							Model dilatih sebanyak 30 <i>epoch</i> dengan <i>batch size</i> 256 dan <i>Optimizer</i> Adam. 
+							Di bawah ini merupakan Grafik <i>Training History</i>.
+						</p>
+						<div class="img mx-auto col-lg-9">
+							<img src="{{url_for('static', filename='public/figures/_validation_training_report.png')}}" class="img-fluid" alt="val_train_report">
+						</div><br>
 						<p style="text-align:justify">
 							Pengujian yang dilakukan terdiri dari pengujian model LSTM yang bertujuan untuk mengetahui tingkat <i>Accuracy</i>, <i>Precision</i>, <i>Recall</i> dan <i>F1-Score</i>. 
 							<i>Confusion Matrix</i> dibutuhkan dalam pengujian ini sebagai acuan dalam melakukan evaluasi performa dari LSTM. 
@@ -31,18 +51,6 @@
 						</p>
 						<br>
 						<div class="text-about">
-							<h4>Hasil pengujian Model LSTM dengan konfigurasi terbaik</h4>
-							{% if status %}
-							<p>
-								<b>
-								<i>Accuracy</i> : {{ hasil1[0] }}%<br>
-								<i>Precision</i> : {{ hasil1[1] }}%<br>
-								<i>Recall</i> : {{ hasil1[2] }}%<br>
-								<i>F1-Score</i> : {{ hasil1[3] }}%
-								</b>
-							</p>
-							{% endif %}
-							
 							<div class="img mx-auto col-md-9 col-lg-9">
 								<h5 style="text-align:center">
 									Grafik K-Fold Cross Validation

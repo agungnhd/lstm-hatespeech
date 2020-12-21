@@ -31,13 +31,13 @@ class lstm_final:
         #self.BASE_PATH = '/content/gdrive/My Drive/agungnhd-lstmsentiment/'
         self.BASE_PATH = ''
         self.timestr = time.strftime("%Y%m%d-%H%M%S")
-        self.experiment_name = ""
+        self.experiment_name = "test_123"
         keras.backend.clear_session()
 
 
     # Load data
     def __load_dataset(self):
-        self.train_data = pd.read_excel('{}data/preprocessed_dataset.xlsx'.format(self.BASE_PATH))
+        self.train_data = pd.read_excel('{}data/new_preprocessed_dataset.xlsx'.format(self.BASE_PATH))
         print(colored("Dataset loaded", "green"))
 
     # Tokenization
@@ -255,15 +255,6 @@ class lstm_final:
     def debug(self):
         print(self.BASE_PATH)
 
-        # weight
-        w_1 = self.model.layers[0].get_weights()[0]
-        w_3 = self.model.layers[2].get_weights()[0]
-        df_w1 = pd.DataFrame(data = w_1)
-        df_w3 = pd.DataFrame(data = w_3)
-        print(df_w1, df_w3)
-        # vocab
-        word_index = self.tokenizer.word_index
-        word_index = pd.DataFrame(list(word_index.items()), columns = ['text','index'])
 
 lstm = lstm_final()
 lstm.main(30, 5)

@@ -17,7 +17,7 @@
 				<img class="one-third js-fullheight align-self-end order-md-last img-fluid" src="{{url_for('static', filename='public/images/deep-learning.svg')}}" alt="deep-learning">
 				<div class="one-forth d-flex align-items-center ftco-animate js-fullheight">
 					<div class="text mt-5">
-						<span class="subheading">Prototype 2.3</span>
+						<span class="subheading">Prototype 2.3.1</span>
 						<h1 class="text-dark">LSTM<span>-HateSpeech</span></h1>
 						<h3 class="text-dark">Deep Learning untuk Klasifikasi Teks Hate Speech menggunakan Algoritma Long Short Term Memory</h3>
 						<h4 class="text-dark">Selengkapnya <a href="#chapter-section">tentang penelitian</a> atau mulai <a href="#feature-section">klasifikasi</a>.</h4>
@@ -65,7 +65,9 @@
 							<i>Hate speech</i> atau ujaran kebencian adalah suatu bentuk ekspresi yang menyebar, menghasut, mempromosikan atau membenarkan kebencian, kekerasan dan diskriminasi terhadap seseorang atau sekelompok orang karena berbagai alasan (Davidson et al., 2017). 
 							Hal tersebut melanggar undang-undang sesuai dengan ketentuan Pasal 28 ayat (2) UU ITE yang berbunyi “Setiap Orang dengan sengaja dan tanpa hak menyebarkan informasi yang ditujukan untuk menimbulkan rasa kebencian atau permusuhan individu dan/atau kelompok masyarakat tertentu berdasarkan atas suku, agama, ras, dan antar golongan (SARA).” 
 							Kasus <i>hate speech</i> sering dijumpai di media sosial khususnya twitter berdampak buruk bagi semua pengguna. 
-							Pada penelitian sebelumnya telah dilakukan klasifikasi teks <i>hate speech</i> pada media sosial, namun terdapat beberapa perbedaan serta kekurangan yang menjadi bahan evaluasi untuk dapat dilakukan penelitian agar memberikan hasil yang lebih optimal.
+							Pada penelitian sebelumnya telah dilakukan klasifikasi teks <i>hate speech</i> pada media sosial, namun terdapat beberapa perbedaan serta kekurangan yang menjadi bahan evaluasi untuk dapat dilakukan penelitian agar memberikan hasil yang lebih optimal. 
+							Penelitian terdahulu menggunakan beberapa metode <i>Machine Learning</i> dalam melakukan klasifikasi teks <i>hate speech</i>. 
+							<i>Hate Speech</i> merupakan fenomena yang sulit untuk didefinisikan dan tidak monolitik.
 						</p>
 					</div>
 					<div id="page-3" class= "page three">
@@ -74,7 +76,7 @@
 							Berdasarkan latar belakang yang telah dipaparkan, maka dapat diambil rumusan masalah dalam penelitian ini adalah sebagai berikut:<br>
 							<ul>
 								<li>Bagaimana mengenali pola-pola pada teks untuk melakukan klasifikasi teks <i>hate speech</i> menggunakan algoritma <i>Long-Short Term Memory</i>.</li>
-								<li>Bagaimana tingkat performa dari algoritma <i>Long-Short Term Memory</i>> dalam melakukan klasifikasi teks <i>hate speech</i>.</li>
+								<li>Bagaimana performa dari algoritma <i>Long-Short Term Memory</i>> dalam melakukan klasifikasi teks <i>hate speech</i>.</li>
 							</ul>
 						</p>
 					</div>
@@ -83,7 +85,7 @@
 						<p style="text-align:justify">
 							<ul>
 								<li>Data penelitian didapatkan dari penelitian terdahulu dengan penambahan data yang diperoleh dari Twitter yang dilakukan pelabelan sesuai anotasi pada penelitian tersebut.</li>
-								<li>Data penelitian tambahan yang digunakan dari tahun 2019 sampai 2020.</li>
+								<li>Data penelitian tambahan yang digunakan dari tahun 2020.</li>
 								<li>Data penelitian yang digunakan berbahasa Indonesia.</li>
 								<li>Akan dilakukan klasifikasi teks yang memiliki kecenderungan <i>hate speech</i> atau <i>non hate speech</i>.</li>
 								<li>Pengujian performa menggunakan <i>K-Fold Cross Validation</i> dengan <i>metrics</i> <i>Accuracy</i>, <i>Precision</i>, <i>Recall</i> dan <i>F-Measure</i> pada model LSTM yang telah dibuat.</li>
@@ -96,7 +98,7 @@
 							Tujuan pada penelitian ini adalah sebagai berikut:<br>
 							<ul>
 								<li>Dapat mengenali pola-pola teks untuk klasifikasi teks <i>hate speech</i> menggunakan algoritma <i>Long-Short Term Memory</i>.</li>
-								<li>Dapat mengetahui tingkat performa dari algoritma <i>Long-Short Term Memory</i> untuk klasifikasi teks <i>hate speech</i>.</li>
+								<li>Dapat mengetahui performa dari algoritma <i>Long-Short Term Memory</i> untuk klasifikasi teks <i>hate speech</i>.</li>
 							</ul>
 						</p>
 					</div>
@@ -105,9 +107,9 @@
 						<p style="text-align:justify">
 							Manfaat yang dapat diperoleh dari penelitian ini adalah:<br>
 							<ul>
-								<li>Dapat diketahui implementasi serta performa dari algoritma <i>Long-Short Term Memory</i> dalam menyelesaikan permasalahan tentang klasifikasi teks <i>hate speech</i>.</li>
+								<li>Dapat diketahui performa dari algoritma <i>Long-Short Term Memory</i> dalam menyelesaikan permasalahan tentang klasifikasi teks <i>hate speech</i>.</li>
 								<li>Sebagai referensi para peneliti atau pengembang yang akan menggunakan algoritma LSTM untuk klasifikasi teks dengan mempertimbangkan <i>Accuracy</i>, <i>Precision</i>, <i>Recall</i> dan <i>F-Measure</i>.</li>
-								<li>Diharapkan dengan adanya system ini dapat memudahkan pengguna media sosial dalam menentukan suatu teks termasuk <i>hate speech</i> atau bukan, sehingga kasus <i>hate speech</i> dapat diminimalisasi.</li>
+								<li>Diharapkan dengan adanya sistem ini dapat memudahkan pengguna media sosial dalam menentukan suatu teks termasuk <i>hate speech</i> atau bukan, sehingga kasus <i>hate speech</i> dapat diminimalisasi.</li>
 							</ul>
 						</p>
 					</div>
